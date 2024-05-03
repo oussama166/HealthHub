@@ -1,4 +1,4 @@
-package com.healthub.healthHubServer.api.Model;
+package com.healthub.healthHubServer.DOA.Model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

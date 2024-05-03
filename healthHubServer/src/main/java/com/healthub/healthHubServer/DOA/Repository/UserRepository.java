@@ -1,6 +1,6 @@
-package com.healthub.healthHubServer.api.Repository;
+package com.healthub.healthHubServer.DOA.Repository;
 
-import com.healthub.healthHubServer.api.Model.User;
+import com.healthub.healthHubServer.DOA.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Integer> {

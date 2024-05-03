@@ -1,4 +1,4 @@
-package com.healthub.healthHubServer.api.Model;
+package com.healthub.healthHubServer.DOA.Model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,14 +11,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Dossier_Medicale {
+public class Avis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    String Antecedent;
-    String Allergies;
-    String Traitement;
-    @OneToOne
-    @JoinColumn(name = "patient_id", referencedColumnName = "id")
-    private Patient patient;
+    int note;
+    String commentaire;
+    @ManyToOne
+    @JoinColumn(name = "medecin_id")
+    private Medecin medecin;
 }
