@@ -36,13 +36,7 @@ public interface ManagerUser {
     // ========== UPDATE ========= //
     // This is for update user by id
     Optional<User> updateUser(
-            int idUser
-    );
-
-    //  This is for update user by name and email
-    Optional<User> updateUser(
-            String name,
-            String email
+            User info
     );
 
     // ========== DELETE ========= //
@@ -57,7 +51,7 @@ public interface ManagerUser {
     );
 
     // This is for deleting user by name and email
-    Optional<User> removeUser(
+    Optional<List<User>> removeUser(
             String name,
             String email
     );
