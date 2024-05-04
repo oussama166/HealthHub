@@ -20,4 +20,7 @@ public class Avis {
     @ManyToOne
     @JoinColumn(name = "medecin_id")
     private Medecin medecin;
+    @ManyToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
 }

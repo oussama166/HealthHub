@@ -29,6 +29,8 @@ public class Patient {
     String password;
     @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
     private Dossier_Medicale dossier_medicale;
-    @OneToMany(mappedBy = "patient")
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Consultation> consultations;
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+    private List<Avis> avis;
 }

@@ -28,10 +28,9 @@ public class Medecin {
     String email;
     String password;
     String MapsUrl;
+    MedicalSpecialty specialty;
     @OneToMany(mappedBy = "medecin")
     private List<Consultation> consultations;
-    @OneToMany(mappedBy = "medecin")
-    private List<Specialite> Specialites;
     @OneToMany(mappedBy = "medecin")
     private List<Avis> avis;
 }
