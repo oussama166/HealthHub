@@ -1,13 +1,11 @@
 package com.healthub.healthHubServer.DOA.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.validation.annotation.Validated;
 
 @Getter
 @Setter
@@ -19,7 +17,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String name;
+    @Column(
+            unique = true
+    )
     String userName;
+    @Column(
+            unique = true
+    )
     String email;
     String password;
 }

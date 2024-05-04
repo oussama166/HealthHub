@@ -1,7 +1,6 @@
 package com.healthub.healthHubServer.DOA.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,20 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Medecin extends User{
+public class Medecin {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    int id;
+    String name;
+    @Column(
+            unique = true
+    )
+    String userName;
+    @Column(
+            unique = true
+    )
+    String email;
+    String password;
     String MapsUrl;
     @OneToMany(mappedBy = "medecin")
     private List<Consultation> consultations;
