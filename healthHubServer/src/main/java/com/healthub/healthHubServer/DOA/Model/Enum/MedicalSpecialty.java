@@ -1,4 +1,4 @@
-package com.healthub.healthHubServer.DOA.Model;
+package com.healthub.healthHubServer.DOA.Model.Enum;
 
 public enum MedicalSpecialty {
     CARDIOLOGY("Cardiology", "Specializes in heart diseases and circulatory system disorders."),
@@ -28,5 +28,5 @@ public enum MedicalSpecialty {
 
     public String getDescription() {
         return description;
-}
+    }
 }

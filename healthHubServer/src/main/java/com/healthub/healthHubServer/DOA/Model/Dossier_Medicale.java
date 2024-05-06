@@ -1,5 +1,6 @@
 package com.healthub.healthHubServer.DOA.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,9 @@ public class Dossier_Medicale {
     String Antecedent;
     String Allergies;
     String Traitement;
+
+    @JsonBackReference
     @OneToOne
     @JoinColumn(name = "patient_id", referencedColumnName = "id")
-    private Patient patient;
+    private Patient patientDossier;
 }

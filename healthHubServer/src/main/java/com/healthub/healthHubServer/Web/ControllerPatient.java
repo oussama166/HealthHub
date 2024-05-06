@@ -23,6 +23,7 @@ public class ControllerPatient {
     //  Inject the patient manager into the controller
     private final ManagerPatient managerPatient;
 
+
     //  To log the result in terminal
     private static final Logger logger = LoggerFactory.getLogger(ControllerPatient.class);
 
@@ -41,6 +42,8 @@ public class ControllerPatient {
     ) {
         try {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
+            // he need to create empty dossier medical
+
             if (patientInfo.isPresent()) {
                 return ResponseEntity.status(200).body(patientInfo);
             }
@@ -61,6 +64,7 @@ public class ControllerPatient {
     ) {
         try {
             Optional<Patient> patient = managerPatient.getPatient(name);
+            logger.info(name);
             if (patient.isPresent()) {
                 return ResponseEntity.status(200).body(patient);
             }
@@ -72,7 +76,7 @@ public class ControllerPatient {
     }
 
     // ========== UPDATE ========= //
-    @GetMapping(
+    @PostMapping(
             path="/updatePatient",
             produces = MediaType.APPLICATION_JSON_VALUE
     )

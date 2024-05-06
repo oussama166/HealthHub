@@ -1,5 +1,6 @@
 package com.healthub.healthHubServer.DOA.Model;
 
+import com.healthub.healthHubServer.DOA.Model.Enum.MedicalSpecialty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,9 +1,14 @@
 package com.healthub.healthHubServer.Service;
 
+import com.healthub.healthHubServer.DOA.Model.Dossier_Medicale;
 import com.healthub.healthHubServer.DOA.Model.Patient;
+import com.healthub.healthHubServer.DOA.Repository.Dossier_MedicaleRepository;
 import com.healthub.healthHubServer.DOA.Repository.PatientRepository;
 import com.healthub.healthHubServer.Service.Manager.ManagerPatient;
+import com.healthub.healthHubServer.Web.ControllerPatient;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,11 +17,19 @@ import java.util.Optional;
 @Service
 public class ServicePatient implements ManagerPatient {
 
-    //Injection of Patient repository
+    // Injection of Patient repository
     private final PatientRepository patientRepository;
+    // Injection of Dossier Medical repository
+    private final Dossier_MedicaleRepository dossier_MedicaleRepository;
 
-    public ServicePatient(PatientRepository patientRepository) {
+    private static final Logger logger = LoggerFactory.getLogger(ServicePatient.class);
+
+    public ServicePatient(
+            PatientRepository patientRepository,
+            Dossier_MedicaleRepository dossierMedicaleRepository
+    ) {
         this.patientRepository = patientRepository;
+        dossier_MedicaleRepository = dossierMedicaleRepository;
     }
 
     // ========== CREATE ========= //
@@ -25,25 +38,40 @@ public class ServicePatient implements ManagerPatient {
         try {
             Optional<Patient> patientInfo = patientRepository.findByAll(patient);
             if (patientInfo.isPresent()) {
-                throw new Exception("We can not create Patient already exist!!!");
+                throw new Exception("We cannot create Patient already exist!!!");
             }
+
+            // Save the patient
             patientRepository.save(patient);
+
+            // Create and associate Dossier_Medicale with the patient
+            Dossier_Medicale dossierMedicale = new Dossier_Medicale();
+            dossierMedicale.setTraitement("");
+            dossierMedicale.setAllergies("");
+            dossierMedicale.setPatientDossier(patient);
+
+            // Save the associated Dossier_Medical
+            dossier_MedicaleRepository.save(dossierMedicale);
+
             return Optional.of(patient);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            logger.warn(e.getMessage());
             return Optional.empty();
         }
     }
+
 
     // ========== SELECT ========= //
     @Override
     public Optional<Patient> getPatient(int id) {
         return patientRepository.findById(id);
     }
+
     @Override
     public Optional<Patient> getPatient(String username) {
         return patientRepository.findByName(username);
     }
+
     // ========== UPDATE ========= //
     @Override
     public Optional<Patient> updatePatient(Patient patient) {

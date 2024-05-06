@@ -1,5 +1,6 @@
 package com.healthub.healthHubServer.DOA.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,10 +28,16 @@ public class Patient {
     )
     String email;
     String password;
-    @OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @OneToOne(mappedBy = "patientDossier", cascade = CascadeType.ALL)
     private Dossier_Medicale dossier_medicale;
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "patientConsulatation", cascade = CascadeType.ALL)
     private List<Consultation> consultations;
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "patientAvis", cascade = CascadeType.ALL)
     private List<Avis> avis;
+
 }

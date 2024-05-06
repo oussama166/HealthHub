@@ -12,7 +12,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
     )
     Optional<Patient> findByAll(Patient patient);
     @Query(
-            value="SELECT pt FROM Patient pt WHERE pt.userName = ?1"
+            value="SELECT pt FROM Patient pt WHERE pt.userName LIKE ?1"
     )
     Optional<Patient> findByName(String username);
 }
