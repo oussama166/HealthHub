@@ -2,16 +2,16 @@ package com.healthub.healthHubServer.DOA.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Dossier_Medicale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
