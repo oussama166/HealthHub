@@ -42,7 +42,7 @@ public class ControllerPatient {
     ) {
         try {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
-            // he need to create empty dossier medical
+            // he needs to create empty dossier medical
 
             if (patientInfo.isPresent()) {
                 return ResponseEntity.status(200).body(patientInfo);

@@ -62,13 +62,15 @@ public class ServiceAvis implements ManagerAvis {
                 List<?> list = listObject.get();
                 Patient patient = (Patient) list.get(0);
                 Medecin medecin = (Medecin) list.get(1);
+                logger.info(patient.toString());
+                logger.info(medecin.toString());
                 // get the consultation status
                 boolean consultations = consultationRepository.exitsConsultationPending(
                         patientId,
                         docID,
                         ConsultationStatus.DONE
                 );
-                if (consultations) {
+                if (!consultations) {
                     Avis avis = new Avis();
                     avis.setId(0);
                     avis.setCommentaire(comment);

@@ -1,6 +1,7 @@
 package com.healthub.healthHubServer.DOA.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.healthub.healthHubServer.Service.Manager.ManagerMedecin;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -30,4 +31,6 @@ public class Avis {
     @JoinColumn(name = "patient_id")
     @JsonBackReference
     private Patient patientAvis;
+
+
 }
