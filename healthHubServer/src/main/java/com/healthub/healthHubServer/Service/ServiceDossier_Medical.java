@@ -4,8 +4,9 @@ import com.healthub.healthHubServer.DOA.Model.Dossier_Medicale;
 import com.healthub.healthHubServer.DOA.Repository.Dossier_MedicaleRepository;
 import com.healthub.healthHubServer.Service.Manager.ManagerDossier_Medical;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,6 +17,7 @@ public class ServiceDossier_Medical implements ManagerDossier_Medical {
 
 
     // INJECT REPOS DOSSIER MEDICAL
+
     private final Dossier_MedicaleRepository dossierMedicaleRepository;
 
     public ServiceDossier_Medical(Dossier_MedicaleRepository dossierMedicaleRepository) {
@@ -23,7 +25,7 @@ public class ServiceDossier_Medical implements ManagerDossier_Medical {
     }
 
     // Logger
-    private final static Logger logger = (Logger) LoggerFactory.getLogger(ServiceDossier_Medical.class);
+    private final static Logger logger = LoggerFactory.getLogger(ServiceDossier_Medical.class);
 
 
     @Override
