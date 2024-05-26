@@ -65,7 +65,8 @@ module.exports = {
                 }
             },
             fontFamily: {
-                "Roboto": ["Roboto", "sans-serif"]
+                "Roboto": ["Roboto", "sans-serif"],
+                "Rubik": ["Rubik", "sans-serif"]
             },
             borderRadius: {
                 lg: "var(--radius)",

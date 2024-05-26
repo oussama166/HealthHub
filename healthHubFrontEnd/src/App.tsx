@@ -1,15 +1,26 @@
 import './App.css'
-import {Button} from "@/components/ui/button.tsx";
+import {Header} from "@/components/Static/Header.tsx";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {Home} from "@/components/Pages/Home.tsx";
+
 
 function App() {
 
     return (
-        <>
-            <h1 className={"text-center text-3xl text-healthHub-300 font-Roboto"}>Hello Click this button</h1>
-            <Button>
-                Click
-            </Button>
-        </>
+        <div>
+            <Router>
+                <div className={"w-full h-full bg-healthHub-white"}>
+                    <Header/>
+                    <Routes>
+                        <Route path="" element={<Home/>}/>
+                    </Routes>
+                    {/* START Add the Footer section here */}
+                    {/* Add the footer section into src/components/Static */}
+                    {/* END Add the Footer section here */}
+                </div>
+            </Router>
+
+        </div>
     )
 }
 
