@@ -5,7 +5,7 @@ function App() {
 
     return (
         <>
-            <h1 className={"text-center text-3xl"}>Hello Click this button</h1>
+            <h1 className={"text-center text-3xl text-healthHub-300 font-Roboto"}>Hello Click this button</h1>
             <Button>
                 Click
             </Button>
