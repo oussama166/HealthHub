@@ -1,9 +1,26 @@
 import {Button} from "@/components/ui/button.tsx";
 import {HiArrowNarrowRight} from "react-icons/hi";
+import {Link, useLocation} from "react-router-dom";
+import {useEffect} from "react";
 
 export const Header = () => {
+    const location = useLocation();
+    let isShown: boolean = false;
+
+    useEffect(() => {
+        checkHeader();
+    }, [location, checkHeader()]);
+
+    // Check if the URL has Registration or login
+    function checkHeader() {
+        const ListHide = ["/Registration", "/Login"]
+        isShown = !ListHide.includes(location.pathname);
+        console.log(isShown);
+    }
+
     return (
-        <nav className={"w-full max-h-40 flex flex-row justify-between items-center px-16 font-Rubik mb-10"}>
+        <nav
+            className={`w-full max-h-40 flex-row justify-between items-center px-16 py-10 font-Rubik mb-10 ${isShown ? "flex" : "hidden"}`}>
             {/* Start Logo */}
             <div>
                 <h1
@@ -42,11 +59,13 @@ export const Header = () => {
                 >
                     Login
                 </Button>
-                <Button
-                    className={"font-bold bg-healthHub-700 text-primary-foreground hover:bg-healthHub-700/90 gap-1 text-base uppercase p-5"}
-                    size={"sm"}
-                >Join Us <HiArrowNarrowRight size={"20px"}/>
-                </Button>
+                <Link to={"/Registration"}>
+                    <Button
+                        className={"font-bold bg-healthHub-700 text-primary-foreground hover:bg-healthHub-700/90 gap-1 text-base uppercase p-5"}
+                        size={"sm"}
+                    >Join Us <HiArrowNarrowRight size={"20px"}/>
+                    </Button>
+                </Link>
             </div>
         </nav>
     );
