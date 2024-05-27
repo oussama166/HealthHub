@@ -18,16 +18,16 @@ export const Header = () => {
                         aria-disabled={true}
                     >Home
                     </li>
-                    <li
+                    {/* <li
                         className={"hover:text-healthHub-black transition-all ease-in-out"}
                         aria-disabled={true}
                     >Product
-                    </li>
+                    </li>*/}
                     <li
                         className={"hover:text-healthHub-black transition-all ease-in-out"}
                         aria-disabled={true}
                     >Pricing
-                    </li>
+                    </li> 
                     <li
                         className={"hover:text-healthHub-black transition-all ease-in-out"}
                         aria-disabled={true}
