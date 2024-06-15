@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "@/components/Pages/Home.tsx";
 import { Registration } from "@/components/Pages/Registration.tsx";
 
-import { Footer } from "./components/Static/Footer";
+// import { Footer } from "./components/Static/Footer";
 
 function App() {
   // Dom Rendering
@@ -17,7 +17,7 @@ function App() {
             <Route path="" element={<Home />} />
             <Route path="/Registration" element={<Registration />} />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
           {/* START Add the Footer section here */}
           {/* Add the footer section into src/components/Static */}
           {/* END Add the Footer section here */}

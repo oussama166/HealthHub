@@ -1,0 +1,59 @@
+{
+  "speciality": [
+    "Allergy and Immunology",
+    "Anesthesiology",
+    "Cardiology",
+    "Dermatology",
+    "Emergency Medicine",
+    "Endocrinology",
+    "Gastroenterology",
+    "General Surgery",
+    "Geriatrics",
+    "Hematology",
+    "Infectious Disease",
+    "Internal Medicine",
+    "Nephrology",
+    "Neurology",
+    "Obstetrics and Gynecology (OB/GYN)",
+    "Oncology",
+    "Ophthalmology",
+    "Orthopedics",
+    "Otolaryngology (ENT)",
+    "Pathology",
+    "Pediatrics",
+    "Physical Medicine and Rehabilitation (Physiatry)",
+    "Plastic Surgery",
+    "Psychiatry",
+    "Pulmonology",
+    "Radiology",
+    "Rheumatology",
+    "Urology"
+  ],
+  "Services": [
+    {
+      "title": "Online Consultations",
+      "description": "Consult with top doctors across various specialties via video or chat communication. It’s totally secure, private, and convenient. Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation.",
+      "link" : "/Consultation.svg"
+    },
+    {
+      "title" : "Booking Appointments",
+      "description" : "Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation features.",
+      "link" : "/Booking.svg "
+    },
+    {
+      "title" : "Prescriptions",
+      "description" : "Receive and renew prescriptions digitally after your consultation with our specialists .",
+      "link":"/Prespections.svg"
+    },
+    {
+      "title":"Medical Notes",
+      "description": "Obtain necessary medical notes for work or school with only a few clicks of hassle.",
+      "link":"/MedicalsNotes.svg"
+    },
+    {
+      "title": "Medicine Refills",
+      "description" : "Skip the pharmacy queues and save time + energy by ordering medicine refills online.",
+      "link":"/Refills.svg"
+    }
+  ]
+}

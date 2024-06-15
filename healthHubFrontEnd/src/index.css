@@ -85,4 +85,7 @@
   body {
     @apply bg-background text-foreground;
   }
+  .container-center {
+    @apply mt-20 w-[calc(100vw-10%)] mx-auto space-y-5
+  }
 }
