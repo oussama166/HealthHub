@@ -1,6 +1,9 @@
+import { FaChevronCircleRight, FaUser } from "react-icons/fa";
 import Hero from "../Static/Home/Hero";
 import OurServices from "../Static/Home/OurServices";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { MdAlternateEmail } from "react-icons/md";
 
 export const Home = () => {
   return (
@@ -38,9 +41,40 @@ export const Home = () => {
         </div>
       </section>
       <section className="container-center  space-y-10 px-20">
-        <h1 className="text-center ">
+        <h1 className="text-center text-3xl font-semibold">
           Reach our <span className="gradient-text">Help Desk </span>for support
         </h1>
+        <p className="text-center max-w-[35%] mx-auto text-neutral-500 font-semibold text-base">
+          Questions? Need assistance? Our dedicated support team is here to help
+          you every step of the way:
+        </p>
+
+        <div className="w-[calc(100vw-40%)] flex flex-row items-center justify-center gap-4 mx-auto">
+          <div className="relative w-full">
+            <Input
+              type={"text"}
+              placeholder={"Enter your name"}
+              className="w-full ring-2 ring-blues-500/20 px-10 py-7 focus-visible:ring-blues-500 focus-visible:ring-2 "
+            />
+            <FaUser className="text-blue-500/70  absolute -translate-y-9 translate-x-4" />
+          </div>
+          <div className="relative w-full">
+            <Input
+              type={"email"}
+              placeholder={"Enter your email"}
+              className="w-full ring-2 ring-blues-500/20 px-10 py-7 focus-visible:ring-blues-500 focus-visible:ring-2 "
+            />
+            <MdAlternateEmail className="text-blue-500/70 absolute -translate-y-9 translate-x-4 text-xl" />
+          </div>
+          <Button
+            variant={"secondary"}
+            className=" bg-blues-500 text-white p-8 hover:bg-blues-600 text-xl font-bold rounded-xl flex gap-5"
+            size={"lg"}
+          >
+            <span>Contact us</span>
+            <FaChevronCircleRight className="text-neutral-50" />
+          </Button>
+        </div>
       </section>
     </>
   );
