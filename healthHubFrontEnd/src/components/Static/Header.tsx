@@ -12,14 +12,14 @@ export const Header = () => {
 
   // Check if the URL has Registration or login
   function checkHeader() {
-    const ListHide = ["/Registration", "/Login"];
+    const ListHide = ["/Registration", "/Login", "/Dashboard"];
     isShown = !ListHide.includes(location.pathname);
     console.log(isShown);
   }
 
   return (
     <nav
-      className={`absolute left-10  w-[calc(100vw-10%)] max-h-40 flex-row justify-between items-center px-16 py-10 font-manrop  mb-10 mx-auto  ${
+      className={`absolute left-10  w-[calc(100vw-10%)] max-h-40 flex-row justify-between items-center px-16 py-10 font-manrop  mb-10 mx-auto z-50  ${
         isShown ? "flex" : "hidden"
       }`}
     >
@@ -46,14 +46,16 @@ export const Header = () => {
           >
             Home
           </li>
-          <li
+          {/* Start Services Features */}
+          {/* <li
             className={
               "hover:text-blues-500  aria-disabled:text-blues-500 transition-all ease-in-out "
             }
             aria-disabled={false}
           >
             Services
-          </li>
+          </li> */}
+          {/* End Services Features */}
           <li
             className={
               "hover:text-blues-500  aria-disabled:text-blues-500 transition-all ease-in-out "

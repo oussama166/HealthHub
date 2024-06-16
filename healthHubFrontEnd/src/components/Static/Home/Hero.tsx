@@ -39,7 +39,7 @@ function Hero() {
       <div className="min-h-lvh bg-heroGradient pt-40 px-24">
         {/* Start Hero  */}
         <section className="w-full flex flex-row gap-5">
-          <div className="w-1/2 flex flex-col gap-10">
+          <div className="w-1/2 flex flex-col gap-10 relative z-20">
             {/* Start Title of the hero  */}
             <h1 className="text-5xl font-semibold leading-snug capitalize">
               Your <span className="gradient-text">trusted partner</span> <br />{" "}

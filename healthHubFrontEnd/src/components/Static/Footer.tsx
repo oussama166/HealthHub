@@ -1,6 +1,28 @@
+import { cn } from "@/lib/utils";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 export const Footer = () => {
+  const location = useLocation();
+  let isShown: boolean = false;
+
+  useEffect(() => {
+    checkHeader();
+  }, [location, checkHeader()]);
+
+  // Check if the URL has Registration or login
+  function checkHeader() {
+    const ListHide = ["/Registration", "/Login", "/Dashboard"];
+    isShown = !ListHide.includes(location.pathname);
+    console.log(isShown);
+  }
   return (
-    <footer className="bg-[#F2FAFF]  w-full min-h-[50vh] mt-20">
+    <footer
+      className={`${cn(
+        "bg-[#F2FAFF]  w-full min-h-[50vh] mt-20",
+        isShown ? "block" : "hidden"
+      )}`}
+    >
       <div className="mx-auto w-full max-w-screen-xl h-full min-h-[50vh] py-10 flex flex-col justify-between ">
         <div className="flex justify-between">
           <div className="space-y-6">
