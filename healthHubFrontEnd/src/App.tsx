@@ -3,7 +3,7 @@ import { Registration } from "@/components/Pages/Registration.tsx";
 import { Header } from "@/components/Static/Header.tsx";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
-import Dashboard from "./components/Pages/Dashboard";
+import { Dashboard } from "./components/Pages/Dashboard";
 import { Error } from "./components/Static/Error";
 import { Footer } from "./components/Static/Footer";
 // import Servicies from "./components/Pages/Servicies";
