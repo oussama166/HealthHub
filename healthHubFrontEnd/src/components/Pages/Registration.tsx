@@ -1,26 +1,5 @@
 export const Registration = () => {
     return (
-        // <div className={"w-full h-screen "}>
-        //     <section
-        //         className={"w-1/3 h-screen bg-[#3bb0ef] relative p-10"}>
-        //         <div className={"w-full font-Roboto"}>
-        //             <div className={"w-full"}>
-        //                 <h1 className={"font-Rubik font-medium text-4xl text-healthHub-300"}>Health<span className={""}>HUB</span></h1>
-        //             </div>
-
-        //         </div>
-        //         {/* START Image */}
-        //         <img
-        //             src="/Backgound/RegistrationDoctor.svg"
-        //             alt="Doct regist illustartion"
-        //             className={"absolute -bottom-5 left-5"}
-        //             height={300}
-        //             width={300}
-        //         />
-        //         {/* END Image */}
-
-        //     </section>
-        // </div>
 <div className="font-[sans-serif] bg-white text-black  flex">
   {/* Image Section */}
   <section className="w-full bg-[#3bb0ef] relative p-10">
@@ -41,10 +20,10 @@ export const Registration = () => {
   </section>
 
   {/* Form Section */}
-  <div className="w-full flex items-center md:p-8 p-6 bg-healthHub-100 h-full lg:w-11/12 lg:ml-auto">
+  <div className="w-full flex items-center md:p-8 p-6  h-full lg:w-11/12 lg:ml-auto">
     <form className="max-w-lg w-full mx-auto">
       <div className="mb-12">
-        <h3 className="text-3xl font-bold text-healthHub-white">Create an account</h3>
+        <h3 className="text-3xl font-bold text-healthHub-300">Create an account</h3>
       </div>
       <div>
         <label className="text-xs block mb-2">Full Name</label>
