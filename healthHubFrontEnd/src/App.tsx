@@ -1,5 +1,6 @@
 import { Home } from "@/components/Pages/Home.tsx";
 import { Registration } from "@/components/Pages/Registration.tsx";
+import {RegistrationM}from"@/components/Pages/RegistrationM"
 import { Header } from "@/components/Static/Header.tsx";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
@@ -19,6 +20,7 @@ function App() {
           <Routes>
             <Route path="" element={<Home />} />
             <Route path="/Registration" element={<Registration />} />
+            <Route path="/RegistrationMedecin" element={<RegistrationM />} />
             {/* As Features */}
             {/* <Route path="/Services" element={<Servicies />} /> */}
             <Route path="/Dashboard" element={<Dashboard />} />

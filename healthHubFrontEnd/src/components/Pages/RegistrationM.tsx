@@ -1,6 +1,6 @@
-export const Registration = () => {
+export const RegistrationM = () => {
     return (
-<div className="font-[sans-serif] bg-white text-black  flex">
+    <div className="font-[sans-serif] bg-white text-black  flex">
   {/* Image Section */}
   <section className="w-full bg-[#3bb0ef] relative p-10">
     <div className="w-full font-Roboto">
