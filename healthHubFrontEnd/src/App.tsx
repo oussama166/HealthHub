@@ -9,6 +9,7 @@ import { Footer } from "./components/Static/Footer";
 // import Servicies from "./components/Pages/Servicies";
 
 function App() {
+
   // Dom Rendering
   return (
     <div>

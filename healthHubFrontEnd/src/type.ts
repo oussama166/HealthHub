@@ -12,3 +12,9 @@ interface SideBarItem {
 export interface SideBarItemData {
   [key: string]: SideBarItem;
 }
+
+
+export interface DashboardContextType {
+  active: string;
+  setActive: (value: string) => void;
+}

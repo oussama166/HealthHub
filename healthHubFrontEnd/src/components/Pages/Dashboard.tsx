@@ -15,11 +15,15 @@ import { SideBarItem } from "@/components/ui/sideBarItem";
 import { createContext, useState } from "react";
 import { cn } from "@/lib/utils";
 import ContentDashboard from "./Dashboard/ContentDashboard";
+import { DashboardContextType } from "@/type";
 
-const DashboardContext = createContext({});
+const DashboardContext = createContext<DashboardContextType>({
+  active: "dashboard",
+  setActive: () => {},
+});
 
 function Dashboard() {
-  const [active, setActive] = useState<string>("desktop");
+  const [active, setActive] = useState<string>("dashboard");
   return (
     <DashboardContext.Provider value={{ active, setActive }}>
       {/* Start Header */}
@@ -73,13 +77,14 @@ function Dashboard() {
         {/* Start Content */}
         <section className="w-full bg-neutral-100/80 inline-flex">
           {/* Start Side Bar */}
-          <div className="w-full max-w-[300px] max-h-[calc(100vh-3.5rem)] border-r-2 flex flex-col font-manrop ">
+          <div className="w-full max-w-[300px] min-h-[calc(100vh-3.5rem)] border-r-2 flex flex-col font-manrop ">
             {/* Dashoard */}
             <div
               className={cn(
                 `inline-flex items-center gap-3 text-neutral-900/80 border-b-2 py-5 px-5 cursor-pointer aria-selected:bg-neutral-400/40 aria-selected:text-neutral-900/80 hover:bg-neutral-400/20 hover:text-neutral-900 transition-all ease-in-out`,
-                active == "desktop" && "bg-neutral-400/40 text-neutral-900/80"
+                active == "dashboard" && "bg-neutral-400/40 text-neutral-900/80"
               )}
+              onClick={()=>setActive("dashboard")}
             >
               <FaHome className="text-xl text-neutral-700 font-semibold" />
               <h1 className="text-xl font-semibold">Dashboard</h1>

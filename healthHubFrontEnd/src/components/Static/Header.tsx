@@ -1,31 +1,27 @@
 import { Button } from "@/components/ui/button.tsx";
-import { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useHeaderVisibility, useScrollEffect } from "@/hooks/useEffect/Effect";
+import { Link } from "react-router-dom";
+
+
 
 export const Header = () => {
-  const location = useLocation();
-  let isShown: boolean = false;
-
-  useEffect(() => {
-    checkHeader();
-  }, [location, checkHeader()]);
-
-  // Check if the URL has Registration or login
-  function checkHeader() {
-    const ListHide = ["/Registration", "/Login", "/Dashboard"];
-    isShown = !ListHide.includes(location.pathname);
-    console.log(isShown);
-  }
+  useScrollEffect();
+  const isShown = useHeaderVisibility();
 
   return (
     <nav
       className={`absolute left-10  w-[calc(100vw-10%)] max-h-40 flex-row justify-between items-center px-16 py-10 font-manrop  mb-10 mx-auto z-50  ${
         isShown ? "flex" : "hidden"
       }`}
+      id="pin-header"
     >
       {/* Start Logo */}
       <div>
-        <h1 className={"text-3xl font-normal text-healthHub-100 capitalize font-Roboto"}>
+        <h1
+          className={
+            "text-3xl font-normal text-healthHub-100 capitalize font-Roboto"
+          }
+        >
           Health<span className={"text-healthHub-200 capitalize"}>HUB</span>
         </h1>
         {/* End Logo */}

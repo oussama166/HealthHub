@@ -5,7 +5,6 @@ import { cva } from "class-variance-authority";
 import gsap from "gsap";
 import { useContext, useRef, useState } from "react";
 import { FaChevronDown, FaCog, FaDesktop, FaRegClock } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { DashboardContext } from "../Pages/Dashboard";
 
 const sideBarStyle = cva(
@@ -50,7 +49,7 @@ const sideBarItemData: SideBarItemData = {
   },
 };
 
-interface sideBarItemProps {
+interface sideBarItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   type: "Drop" | "Single";
   displayName: "desktop" | "attendance" | "settings";
 }
@@ -96,7 +95,12 @@ function SideBarItem({ type, displayName }: sideBarItemProps) {
         onClick={chevronAnimation}
       >
         <div className="w-full min-w-[100%] inline-flex items-center justify-between gap-3 ">
-          <div className="inline-flex items-center gap-5">
+          <div
+            className="inline-flex items-center gap-5"
+            onClick={() => {
+              setActive(displayName);
+            }}
+          >
             {sideBarItemData[displayName].icon}
             <h1 className="text-xl font-semibold inline-flex justify-between capitalize">
               {sideBarItemData[displayName].main}
@@ -114,24 +118,19 @@ function SideBarItem({ type, displayName }: sideBarItemProps) {
           ref={refContainerDropData}
           className={`h-0 flex-col items-start overflow-hidden space-y-2 mx-3`}
         >
-          {Object.keys(sideBarItemData[displayName].sub).map(
-            (key) => {
-              const linkToInterface =
-                sideBarItemData[displayName]?.sub[key];
-              return (
-                <div
-                  key={key}
-                  className={cn(
-                    "bg-transparent rounded-lg w-full hover:bg-neutral-400/30 p-3 cursor-pointer transition-all ease-in-out hover:text-neutral-900/80 hover:rounded-lg"
-                  )}
-                >
-                  <Link to={`/Dashboard${linkToInterface}`}>
-                    <h1 className="text-xl font-semibold">{key}</h1>
-                  </Link>
-                </div>
-              );
-            }
-          )}
+          {Object.keys(sideBarItemData[displayName].sub).map((key) => {
+            // const linkToInterface = sideBarItemData[displayName]?.sub[key];
+            return (
+              <div
+                key={key}
+                className={cn(
+                  "bg-transparent rounded-lg w-full hover:bg-neutral-400/30 p-3 cursor-pointer transition-all ease-in-out hover:text-neutral-900/80 hover:rounded-lg"
+                )}
+              >
+                <h1 className="text-xl font-semibold">{key}</h1>
+              </div>
+            );
+          })}
         </div>
       )}
     </>
@@ -139,4 +138,3 @@ function SideBarItem({ type, displayName }: sideBarItemProps) {
 }
 
 export { SideBarItem };
-
