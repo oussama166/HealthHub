@@ -1,3 +1,6 @@
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {speciality} from "@/manifest.json";
+
 export const RegistrationM = () => {
     return (
     <div className="font-[sans-serif] bg-white text-black  flex">
@@ -52,6 +55,31 @@ export const RegistrationM = () => {
           </svg>
         </div>
       </div>
+      <div className="mt-10">
+        <label className="text-xs block mb-2">Specialty</label>
+        <Select>
+              <SelectTrigger className="w-full py-8 px-4 text-xl ring-offset-blue-500 focus-visible:ring-1 focus-visible:ring-blues-500">
+                <SelectValue
+                  placeholder="Internal Medicine"
+                  defaultValue={"Internal Medicine"}
+                />
+              </SelectTrigger>
+              <SelectContent>
+                {speciality.map((item, index) => (
+                  <SelectItem className="text-xl" key={index} value={item}>
+                    {item}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+        </Select>
+      </div>
+      <div className="mt-10">
+        <label className="text-xs block mb-2">consultation price</label>
+        <div className="relative flex items-center">
+          <input name="consultationp" type="number" required className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-healthHub-700 px-2 py-3 outline-none" placeholder="Enter price" />
+        </div>
+      </div>
+      
       <div className="mt-10">
         <label className="text-xs block mb-2">Password</label>
         <div className="relative flex items-center">
