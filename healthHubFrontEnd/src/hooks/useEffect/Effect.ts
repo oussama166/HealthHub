@@ -56,7 +56,7 @@ export const useHeaderVisibility = () => {
   }, [location]);
 
   const checkHeader = () => {
-    const ListHide = ["/Registration", "/Login", "/Dashboard"];
+    const ListHide = ["/Registration", "/Login", "/Dashboard","/RegistrationMedecin"];
     setIsShown(!ListHide.includes(location.pathname));
   };
 
