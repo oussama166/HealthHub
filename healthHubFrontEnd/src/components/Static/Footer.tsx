@@ -1,21 +1,8 @@
+import { useHeaderVisibility } from "@/hooks/useEffect/Effect";
 import { cn } from "@/lib/utils";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 export const Footer = () => {
-  const location = useLocation();
-  let isShown: boolean = false;
-
-  useEffect(() => {
-    checkHeader();
-  }, [location, checkHeader()]);
-
-  // Check if the URL has Registration or login
-  function checkHeader() {
-    const ListHide = ["/Registration", "/Login", "/Dashboard"];
-    isShown = !ListHide.includes(location.pathname);
-    console.log(isShown);
-  }
+  const isShown =  useHeaderVisibility();
   return (
     <footer
       className={`${cn(
