@@ -1,6 +1,5 @@
-import { FaHome } from "react-icons/fa";
-import { IoMdNotificationsOutline } from "react-icons/io";
 import { FiChevronsLeft } from "react-icons/fi";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import { TbWorld } from "react-icons/tb";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
@@ -13,11 +12,10 @@ import {
 } from "../ui/select";
 
 import { SideBarItem } from "@/components/ui/sideBarItem";
-import { createContext, useState } from "react";
-import { cn } from "@/lib/utils";
-import ContentDashboard from "./Dashboard/ContentDashboard";
-import { DashboardContextType } from "@/type";
 import { useCloseSideBar } from "@/hooks/useEffect/Effect";
+import { DashboardContextType } from "@/type";
+import { createContext, useState } from "react";
+import ContentDashboard from "./Dashboard/ContentDashboard";
 
 const DashboardContext = createContext<DashboardContextType>({
   active: "dashboard",
@@ -26,9 +24,9 @@ const DashboardContext = createContext<DashboardContextType>({
 
 function Dashboard() {
   const [active, setActive] = useState<string>("dashboard");
-  const [open, setOpen] = useState<boolean>(true);
+  const [close, setClose] = useState<boolean>(false);
 
-  useCloseSideBar(open);
+  useCloseSideBar(close);
   return (
     <DashboardContext.Provider value={{ active, setActive }}>
       {/* Start Header */}
@@ -97,23 +95,22 @@ function Dashboard() {
               <FaHome className="text-xl text-neutral-700 font-semibold" />
               <h1 className="text-xl font-semibold">Dashboard</h1>
             </div> */}
-            <SideBarItem type="Single" displayName="dashboard" smallIcon={!open} />
+            <SideBarItem type="Single" displayName="dashboard" smallIcon={close} />
             {/* End Dashoard */
             }
-            <SideBarItem type="Single" displayName="desktop" smallIcon={!open} />
+            <SideBarItem type="Single" displayName="desktop" smallIcon={close} />
             <SideBarItem
               type="Drop"
               displayName="attendance"
-              smallIcon={!open}
+              smallIcon={close}
             />
-            <SideBarItem type="Drop" displayName="settings" smallIcon={!open} />
+            <SideBarItem type="Drop" displayName="settings" smallIcon={close} />
             {/* Attendance */}
           </div>
           <div
             className="w-7 h-7 absolute left-[285px] top-1/2 bg-neteurals-300 rounded-full  flex items-center justify-center cursor-pointer"
             onClick={() => {
-              setOpen(!open);
-              console.log(open);
+              setClose(!close);
             }}
             id="side-button"
           >
@@ -129,3 +126,4 @@ function Dashboard() {
 }
 
 export { Dashboard, DashboardContext };
+

@@ -115,7 +115,7 @@ function SideBarItem({
             <h1
               className={cn(
                 "text-xl font-semibold inline-flex justify-between capitalize",
-                !smallIcon ? "hidden items-center" : "block"
+                smallIcon ? "hidden items-center" : "block"
               )}
             >
               {sideBarItemData[displayName].main}
@@ -125,7 +125,7 @@ function SideBarItem({
           {type === "Drop" && (
             <div
               ref={refContainer}
-              className={cn(!smallIcon ? "hidden" : "block")}
+              className={cn(smallIcon ? "hidden" : "block")}
             >
               <FaChevronDown className="text-neutral-700 text-xl " />
             </div>
