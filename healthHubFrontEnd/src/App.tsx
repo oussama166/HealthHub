@@ -8,6 +8,7 @@ import { Dashboard } from "./components/Pages/Dashboard";
 import { Error } from "./components/Static/Error";
 import { Footer } from "./components/Static/Footer";
 import { Login } from "./components/Pages/Login";
+import { FindDoctors } from "./components/Pages/FindDoctors";
 // import Servicies from "./components/Pages/Servicies";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/Registration" element={<Registration />} />
             <Route path="/RegistrationMedecin" element={<RegistrationM />} />
             <Route path="/Login" element={<Login />} />
+            <Route path="/FindDoctors" element={<FindDoctors />} />
             {/* As Features */}
             {/* <Route path="/Services" element={<Servicies />} /> */}
             <Route path="/Dashboard" element={<Dashboard />} />
