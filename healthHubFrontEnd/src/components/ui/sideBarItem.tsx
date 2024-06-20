@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { cva } from "class-variance-authority";
 import gsap from "gsap";
 import { useContext, useRef, useState } from "react";
-import { FaChevronDown, FaCog, FaDesktop, FaRegClock } from "react-icons/fa";
+import { FaChevronDown, FaCog, FaDesktop, FaHome, FaRegClock } from "react-icons/fa";
 import { DashboardContext } from "../Pages/Dashboard";
 
 const sideBarStyle = cva(
@@ -23,6 +23,11 @@ const sideBarStyle = cva(
 );
 
 const sideBarItemData: SideBarItemData = {
+  dashboard: {
+    main: "Dashboard",
+    sub: {},
+    icon: <FaHome className="text-xl" />,
+  },
   desktop: {
     main: "Job desk work",
     sub: {},
@@ -51,13 +56,18 @@ const sideBarItemData: SideBarItemData = {
 
 interface sideBarItemProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   type: "Drop" | "Single";
-  displayName: "desktop" | "attendance" | "settings";
+  displayName: "desktop" | "attendance" | "settings" | "dashboard";
+  smallIcon?: boolean;
 }
 
 // Using gsap fo animation to accoridion
 gsap.registerPlugin(useGSAP);
 
-function SideBarItem({ type, displayName }: sideBarItemProps) {
+function SideBarItem({
+  type,
+  displayName,
+  smallIcon = false,
+}: sideBarItemProps) {
   const [open, setOpen] = useState(false);
 
   const { active, setActive } = useContext(DashboardContext);
@@ -102,12 +112,21 @@ function SideBarItem({ type, displayName }: sideBarItemProps) {
             }}
           >
             {sideBarItemData[displayName].icon}
-            <h1 className="text-xl font-semibold inline-flex justify-between capitalize">
+            <h1
+              className={cn(
+                "text-xl font-semibold inline-flex justify-between capitalize",
+                !smallIcon ? "hidden items-center" : "block"
+              )}
+            >
               {sideBarItemData[displayName].main}
             </h1>
           </div>
+
           {type === "Drop" && (
-            <div ref={refContainer}>
+            <div
+              ref={refContainer}
+              className={cn(!smallIcon ? "hidden" : "block")}
+            >
               <FaChevronDown className="text-neutral-700 text-xl " />
             </div>
           )}

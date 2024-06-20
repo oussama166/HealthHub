@@ -1,5 +1,7 @@
+import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
+import { Badge } from "./badge";
 import { Button } from "./button";
 
 // This type is used to define the shape of our data.
@@ -8,7 +10,7 @@ export type Schedule = {
   id: number;
   title: string;
   date: string;
-  startTime: string;
+  startTime: string | Date | number;
   endTime: string;
   location: string;
   description: string;
@@ -69,6 +71,20 @@ export const columns: ColumnDef<Schedule>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => (
+      <div className="w-full flex items-center justify-center">
+        <Badge
+          className={cn(
+            row.getValue("location") == "Office"
+              ? "bg-green-500 hover:bg-green-600/80"
+              : "bg-red-500 hover:bg-red-600/80",
+            "font-semibold p-2 uppercase tracking-widest cursor-pointer"
+          )}
+        >
+          {row.getValue("location")}
+        </Badge>
+      </div>
+    ),
   },
   {
     accessorKey: "description",
@@ -101,12 +117,42 @@ export const columnsConsultation: ColumnDef<scheduleConsultation>[] = [
     accessorKey: "phone",
     header: "Phone",
   },
-  {
-    accessorKey: "location",
-    header: "Location",
-  },
-  {
-    accessorKey: "state",
-    header: "State",
-  },
-]
+  // {
+  //   accessorKey: "location",
+  //   header: "Location",
+  //   cell: ({ row }) => (
+  //     <div className="w-full flex items-center justify-center">
+  //       <Badge
+  //         className={cn(
+  //           row.getValue("location") == "office"
+  //             ? "bg-green-500 hover:bg-green-600/80"
+  //             : "bg-red-500 hover:bg-red-600/80",
+  //           "font-semibold p-2 uppercase tracking-widest cursor-pointer"
+  //         )}
+  //       >
+  //         {row.getValue("location")}
+  //       </Badge>
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   accessorKey: "state",
+  //   header: "State",
+  //   cell: ({ row }) => (
+  //     <div className="w-full flex items-center justify-center">
+  //       <Badge
+  //         className={cn(
+  //           row.getValue("state") == "approved"
+  //             ? "bg-green-500 hover:bg-green-600/80"
+  //             : row.getValue("state") == "pending"
+  //             ? "bg-yellow-500 hover:bg-yellow-600/80"
+  //             : "bg-red-500 hover:bg-red-600/80",
+  //           "font-semibold p-2 uppercase tracking-widest cursor-pointer"
+  //         )}
+  //       >
+  //         {row.getValue("state")}
+  //       </Badge>
+  //     </div>
+  // ),
+  // },
+];

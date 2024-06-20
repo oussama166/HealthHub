@@ -7,6 +7,12 @@ import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { BiCalendarCheck } from "react-icons/bi";
 import { format } from "date-fns";
 import { MdOutlineMailOutline, MdOutlinePhone } from "react-icons/md";
+import { DataTable } from "@/components/ui/datatable";
+import { columnsConsultation, scheduleConsultation } from "@/components/ui/columns";
+
+// Getting the data from the manifest
+
+import { dataJobDesk } from "@/manifest.json";
 
 function Jobdesk() {
   return (
@@ -120,7 +126,10 @@ function Jobdesk() {
               `w-full max-w-[70%] p-10 flex-col items-start gap-5 rounded-lg `
             )}
           >
-            
+            <h1 className="text-xl font-semibold">
+              Schedule of the office day
+            </h1>
+            <DataTable data={dataJobDesk as scheduleConsultation[]} columns={columnsConsultation} />
           </section>
         </div>
         {/* End Title of the screen */}

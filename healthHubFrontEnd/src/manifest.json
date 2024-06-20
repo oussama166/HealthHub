@@ -33,27 +33,329 @@
     {
       "title": "Online Consultations",
       "description": "Consult with top doctors across various specialties via video or chat communication. It’s totally secure, private, and convenient. Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation.",
-      "link" : "/Consultation.svg"
+      "link": "/Consultation.svg"
     },
     {
-      "title" : "Booking Appointments",
-      "description" : "Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation features.",
-      "link" : "/Booking.svg "
+      "title": "Booking Appointments",
+      "description": "Choose the best time for an in-person visit with our easy-to-use scheduling system, or proceed with our online consultation features.",
+      "link": "/Booking.svg "
     },
     {
-      "title" : "Prescriptions",
-      "description" : "Receive and renew prescriptions digitally after your consultation with our specialists .",
-      "link":"/Prespections.svg"
+      "title": "Prescriptions",
+      "description": "Receive and renew prescriptions digitally after your consultation with our specialists .",
+      "link": "/Prespections.svg"
     },
     {
-      "title":"Medical Notes",
+      "title": "Medical Notes",
       "description": "Obtain necessary medical notes for work or school with only a few clicks of hassle.",
-      "link":"/MedicalsNotes.svg"
+      "link": "/MedicalsNotes.svg"
     },
     {
       "title": "Medicine Refills",
-      "description" : "Skip the pharmacy queues and save time + energy by ordering medicine refills online.",
-      "link":"/Refills.svg"
+      "description": "Skip the pharmacy queues and save time + energy by ordering medicine refills online.",
+      "link": "/Refills.svg"
+    }
+  ],
+  "dataJobDesk": [
+    {
+      "id": 1,
+      "name": "Alice Johnson",
+      "date": "2024-06-21",
+      "startTime": "09:00 AM",
+      "endTime": "10:00 AM",
+      "phone": "555-1234",
+      "location": "office",
+      "state": "approved"
+    },
+    {
+      "id": 2,
+      "name": "Bob Smith",
+      "date": "2024-06-22",
+      "startTime": "11:30 AM",
+      "endTime": "12:30 PM",
+      "phone": "555-5678",
+      "location": "online",
+      "state": "pending"
+    },
+    {
+      "id": 3,
+      "name": "Eva Martinez",
+      "date": "2024-06-23",
+      "startTime": "02:00 PM",
+      "endTime": "03:00 PM",
+      "phone": "555-9012",
+      "location": "office",
+      "state": "rejected"
+    },
+    {
+      "id": 4,
+      "name": "David Wilson",
+      "date": "2024-06-24",
+      "startTime": "10:00 AM",
+      "endTime": "11:00 AM",
+      "phone": "555-3456",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 5,
+      "name": "Sophia Brown",
+      "date": "2024-06-25",
+      "startTime": "01:30 PM",
+      "endTime": "02:30 PM",
+      "phone": "555-7890",
+      "location": "office",
+      "state": "pending"
+    },
+    {
+      "id": 6,
+      "name": "Michael Lee",
+      "date": "2024-06-26",
+      "startTime": "03:00 PM",
+      "endTime": "04:00 PM",
+      "phone": "555-2345",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 7,
+      "name": "Emily Davis",
+      "date": "2024-06-27",
+      "startTime": "11:00 AM",
+      "endTime": "12:00 PM",
+      "phone": "555-6789",
+      "location": "office",
+      "state": "rejected"
+    },
+    {
+      "id": 8,
+      "name": "James Rodriguez",
+      "date": "2024-06-28",
+      "startTime": "02:30 PM",
+      "endTime": "03:30 PM",
+      "phone": "555-0123",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 9,
+      "name": "Olivia Nguyen",
+      "date": "2024-06-29",
+      "startTime": "09:30 AM",
+      "endTime": "10:30 AM",
+      "phone": "555-4567",
+      "location": "office",
+      "state": "pending"
+    },
+    {
+      "id": 10,
+      "name": "William Garcia",
+      "date": "2024-06-30",
+      "startTime": "01:00 PM",
+      "endTime": "02:00 PM",
+      "phone": "555-8901",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 11,
+      "name": "Ava Martinez",
+      "date": "2024-07-01",
+      "startTime": "10:30 AM",
+      "endTime": "11:30 AM",
+      "phone": "555-2345",
+      "location": "office",
+      "state": "approved"
+    },
+    {
+      "id": 12,
+      "name": "Jack Brown",
+      "date": "2024-07-02",
+      "startTime": "03:30 PM",
+      "endTime": "04:30 PM",
+      "phone": "555-6789",
+      "location": "online",
+      "state": "pending"
+    },
+    {
+      "id": 13,
+      "name": "Isabella Wilson",
+      "date": "2024-07-03",
+      "startTime": "11:00 AM",
+      "endTime": "12:00 PM",
+      "phone": "555-0123",
+      "location": "office",
+      "state": "rejected"
+    },
+    {
+      "id": 14,
+      "name": "Noah Lee",
+      "date": "2024-07-04",
+      "startTime": "02:00 PM",
+      "endTime": "03:00 PM",
+      "phone": "555-4567",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 15,
+      "name": "Charlotte Davis",
+      "date": "2024-07-05",
+      "startTime": "09:30 AM",
+      "endTime": "10:30 AM",
+      "phone": "555-8901",
+      "location": "office",
+      "state": "pending"
+    },
+    {
+      "id": 16,
+      "name": "Liam Rodriguez",
+      "date": "2024-07-06",
+      "startTime": "01:30 PM",
+      "endTime": "02:30 PM",
+      "phone": "555-2345",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 17,
+      "name": "Amelia Nguyen",
+      "date": "2024-07-07",
+      "startTime": "10:00 AM",
+      "endTime": "11:00 AM",
+      "phone": "555-6789",
+      "location": "office",
+      "state": "rejected"
+    },
+    {
+      "id": 18,
+      "name": "Henry Garcia",
+      "date": "2024-07-08",
+      "startTime": "03:00 PM",
+      "endTime": "04:00 PM",
+      "phone": "555-0123",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 19,
+      "name": "Mia Johnson",
+      "date": "2024-07-09",
+      "startTime": "11:30 AM",
+      "endTime": "12:30 PM",
+      "phone": "555-4567",
+      "location": "office",
+      "state": "pending"
+    },
+    {
+      "id": 20,
+      "name": "Benjamin Smith",
+      "date": "2024-07-10",
+      "startTime": "02:30 PM",
+      "endTime": "03:30 PM",
+      "phone": "555-8901",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 21,
+      "name": "Elizabeth Martinez",
+      "date": "2024-07-11",
+      "startTime": "09:00 AM",
+      "endTime": "10:00 AM",
+      "phone": "555-2345",
+      "location": "office",
+      "state": "approved"
+    },
+    {
+      "id": 22,
+      "name": "Daniel Brown",
+      "date": "2024-07-12",
+      "startTime": "01:00 PM",
+      "endTime": "02:00 PM",
+      "phone": "555-6789",
+      "location": "online",
+      "state": "pending"
+    },
+    {
+      "id": 23,
+      "name": "Chloe Wilson",
+      "date": "2024-07-13",
+      "startTime": "10:30 AM",
+      "endTime": "11:30 AM",
+      "phone": "555-0123",
+      "location": "office",
+      "state": "rejected"
+    },
+    {
+      "id": 24,
+      "name": "Ethan Lee",
+      "date": "2024-07-14",
+      "startTime": "02:30 PM",
+      "endTime": "03:30 PM",
+      "phone": "555-4567",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 25,
+      "name": "Grace Davis",
+      "date": "2024-07-15",
+      "startTime": "09:00 AM",
+      "endTime": "10:00 AM",
+      "phone": "555-8901",
+      "location": "office",
+      "state": "pending"
+    },
+    {
+      "id": 26,
+      "name": "Ryan Rodriguez",
+      "date": "2024-07-16",
+      "startTime": "01:30 PM",
+      "endTime": "02:30 PM",
+      "phone": "555-2345",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 27,
+      "name": "Natalie Nguyen",
+      "date": "2024-07-17",
+      "startTime": "11:00 AM",
+      "endTime": "12:00 PM",
+      "phone": "555-6789",
+      "location": "office",
+      "state": "rejected"
+    },
+    {
+      "id": 28,
+      "name": "Jacob Garcia",
+      "date": "2024-07-18",
+      "startTime": "03:00 PM",
+      "endTime": "04:00 PM",
+      "phone": "555-0123",
+      "location": "online",
+      "state": "approved"
+    },
+    {
+      "id": 29,
+      "name": "Avery Johnson",
+      "date": "2024-07-19",
+      "startTime": "10:30 AM",
+      "endTime": "11:30 AM",
+      "phone": "555-4567",
+      "location": "office",
+      "state": "pending"
+    },
+    {
+      "id": 30,
+      "name": "Logan Smith",
+      "date": "2024-07-20",
+      "startTime": "02:00 PM",
+      "endTime": "03:00 PM",
+      "phone": "555-8901",
+      "location": "online",
+      "state": "approved"
     }
   ]
 }

@@ -1,15 +1,16 @@
 import {
   ColumnDef,
-  SortingState,
   ColumnFiltersState,
+  SortingState,
   flexRender,
   getCoreRowModel,
-  useReactTable,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
+  useReactTable,
 } from "@tanstack/react-table";
 
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -18,9 +19,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Button } from "./button";
-import { Input } from "@/components/ui/input"
 import { useState } from "react";
+import { Button } from "./button";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -30,11 +30,13 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
-}: DataTableProps<TData, TValue>) {
+  useInput = false,
+  usePagination = false,
+}:
+  | DataTableProps<TData, TValue>
+  | { useInput?: boolean; usePagination?: boolean }) {
   const [sorting, setSorting] = useState<SortingState>([]);
-   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    []
-  )
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const table = useReactTable({
     data,
     columns,
@@ -54,16 +56,9 @@ export function DataTable<TData, TValue>({
     <div className="rounded-md border w-full">
       {/* Place holder for search */}
       <div className="flex items-center p-5">
-        <Input
-          placeholder="Filter by the location ...(Zoom , Location)"
-          value={
-            (table.getColumn("location")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("location")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+        {/* Adding the input */}
+        {useInput ? filterInput(table) : null}
+        {/*  */}
       </div>
       {/* Table */}
       <Table>
@@ -93,7 +88,7 @@ export function DataTable<TData, TValue>({
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id} className="text-base">
+                  <TableCell key={cell.id} className="text-base font-semibold">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -111,23 +106,44 @@ export function DataTable<TData, TValue>({
 
       {/* Pagination */}
       <div className="flex items-center justify-end space-x-2 py-4 px-10">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
+        {usePagination ? paginationButton() : null}
       </div>
     </div>
   );
 }
+
+const filterInput = (table: typeof useReactTable<TData>) => {
+  return (
+    <Input
+      placeholder="Filter by the location ...(Zoom , Location)"
+      value={(table.getColumn("location")?.getFilterValue() as string) ?? ""}
+      onChange={(event) =>
+        table.getColumn("location")?.setFilterValue(event.target.value)
+      }
+      className="max-w-sm"
+    />
+  );
+};
+
+const paginationButton = () => {
+  return (
+    <>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => table.previousPage()}
+        disabled={!table.getCanPreviousPage()}
+      >
+        Previous
+      </Button>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() => table.nextPage()}
+        disabled={!table.getCanNextPage()}
+      >
+        Next
+      </Button>
+    </>
+  );
+};

@@ -1,5 +1,6 @@
 import { FaHome } from "react-icons/fa";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { FiChevronsLeft } from "react-icons/fi";
 import { TbWorld } from "react-icons/tb";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
@@ -16,6 +17,7 @@ import { createContext, useState } from "react";
 import { cn } from "@/lib/utils";
 import ContentDashboard from "./Dashboard/ContentDashboard";
 import { DashboardContextType } from "@/type";
+import { useCloseSideBar } from "@/hooks/useEffect/Effect";
 
 const DashboardContext = createContext<DashboardContextType>({
   active: "dashboard",
@@ -24,6 +26,9 @@ const DashboardContext = createContext<DashboardContextType>({
 
 function Dashboard() {
   const [active, setActive] = useState<string>("dashboard");
+  const [open, setOpen] = useState<boolean>(true);
+
+  useCloseSideBar(open);
   return (
     <DashboardContext.Provider value={{ active, setActive }}>
       {/* Start Header */}
@@ -75,25 +80,44 @@ function Dashboard() {
         {/* End Header */}
 
         {/* Start Content */}
-        <section className="w-full bg-neutral-100/80 inline-flex">
+        <section className="w-full bg-neutral-100/80 inline-flex relative">
           {/* Start Side Bar */}
-          <div className="w-full max-w-[300px] min-h-[calc(100vh-3.5rem)] border-r-2 flex flex-col font-manrop ">
+          <div
+            className="w-full max-w-[300px] min-h-[calc(100vh-3.5rem)] border-r-2 flex flex-col font-manrop overflow-hidden"
+            id="side-bar"
+          >
             {/* Dashoard */}
-            <div
+            {/* <div
               className={cn(
-                `inline-flex items-center gap-3 text-neutral-900/80 border-b-2 py-5 px-5 cursor-pointer aria-selected:bg-neutral-400/40 aria-selected:text-neutral-900/80 hover:bg-neutral-400/20 hover:text-neutral-900 transition-all ease-in-out`,
+                `inline-flex items-center gap-3 text-neutral-900/80 border-b-2 py-5 px-5 cursor-pointer aria-selected:bg-neutral-400/40 aria-selected:text-neutral-900/80 hover:bg-neutral-400/20 hover:text-neutral-900 transition-all ease-in-out text-nowrap`,
                 active == "dashboard" && "bg-neutral-400/40 text-neutral-900/80"
               )}
-              onClick={()=>setActive("dashboard")}
+              onClick={() => setActive("dashboard")}
             >
               <FaHome className="text-xl text-neutral-700 font-semibold" />
               <h1 className="text-xl font-semibold">Dashboard</h1>
-            </div>
-            {/* End Dashoard */}
-            <SideBarItem type="Single" displayName="desktop" />
-            <SideBarItem type="Drop" displayName="attendance" />
-            <SideBarItem type="Drop" displayName="settings" />
+            </div> */}
+            <SideBarItem type="Single" displayName="dashboard" smallIcon={!open} />
+            {/* End Dashoard */
+            }
+            <SideBarItem type="Single" displayName="desktop" smallIcon={!open} />
+            <SideBarItem
+              type="Drop"
+              displayName="attendance"
+              smallIcon={!open}
+            />
+            <SideBarItem type="Drop" displayName="settings" smallIcon={!open} />
             {/* Attendance */}
+          </div>
+          <div
+            className="w-7 h-7 absolute left-[285px] top-1/2 bg-neteurals-300 rounded-full  flex items-center justify-center cursor-pointer"
+            onClick={() => {
+              setOpen(!open);
+              console.log(open);
+            }}
+            id="side-button"
+          >
+            <FiChevronsLeft className="text-white text-xl" />
           </div>
           {/* End Side Bar */}
           <ContentDashboard />
