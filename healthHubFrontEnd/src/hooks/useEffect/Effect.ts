@@ -61,6 +61,7 @@ export const useHeaderVisibility = () => {
       "/Login",
       "/Dashboard",
       "/RegistrationMedecin",
+      "/DossierMedicale"
     ];
     setIsShown(!ListHide.includes(location.pathname));
   };
