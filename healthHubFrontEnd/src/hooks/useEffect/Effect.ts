@@ -69,25 +69,27 @@ export const useHeaderVisibility = () => {
 };
 
 export const useCloseSideBar = (open: boolean) => {
-  if (open) {
-    gsap.to("#side-bar", {
-      width: 75,
-      duration: 0.5,
-    });
-    gsap.to("#side-button",{
-      left: 55,
-      rotateZ :180,
-      duration: 0.5,
-    })
-  } else {
-    gsap.to("#side-bar", {
-      width: 400,
-      duration: 0.5,
-    });
-     gsap.to("#side-button", {
-       left: 285,
-       rotate: 0,
-       duration: 0.5,
-     });
-  }
+  useEffect(() => {
+    if (open) {
+      gsap.to("#side-bar", {
+        width: 75,
+        duration: 0.5,
+      });
+      gsap.to("#side-button", {
+        left: 55,
+        rotateZ: 180,
+        duration: 0.5,
+      });
+    } else {
+      gsap.to("#side-bar", {
+        width: 400,
+        duration: 0.5,
+      });
+      gsap.to("#side-button", {
+        left: 285,
+        rotate: 0,
+        duration: 0.5,
+      });
+    }
+  }, [open]);
 };

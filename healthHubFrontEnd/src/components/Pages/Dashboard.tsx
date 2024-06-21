@@ -1,7 +1,6 @@
 import { FiChevronsLeft } from "react-icons/fi";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { TbWorld } from "react-icons/tb";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import {
   Select,
@@ -69,10 +68,13 @@ function Dashboard() {
               <IoMdNotificationsOutline className="text-black text-3xl" />
             </Button>
 
-            <Avatar>
+            {/* <Avatar>
               <AvatarImage src="/xavatario.png" alt="avartar" />
               <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            </Avatar> */}
+            <Button variant={"default"} className="bg-blues-600 text-white hover:bg-blues-700/80">
+              Log out
+            </Button>
           </div>
         </section>
         {/* End Header */}

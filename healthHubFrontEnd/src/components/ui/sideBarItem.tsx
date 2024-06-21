@@ -4,7 +4,13 @@ import { useGSAP } from "@gsap/react";
 import { cva } from "class-variance-authority";
 import gsap from "gsap";
 import { useContext, useRef, useState } from "react";
-import { FaChevronDown, FaCog, FaDesktop, FaHome, FaRegClock } from "react-icons/fa";
+import {
+  FaChevronDown,
+  FaCog,
+  FaDesktop,
+  FaHome,
+  FaRegClock,
+} from "react-icons/fa";
 import { DashboardContext } from "../Pages/Dashboard";
 
 const sideBarStyle = cva(
@@ -38,8 +44,6 @@ const sideBarItemData: SideBarItemData = {
     sub: {
       "Daily log": "/dailyLog",
       Request: "/request",
-      Details: "/details",
-      Summary: "/summary",
     },
     icon: <FaRegClock className="text-xl" />,
   },
@@ -48,7 +52,6 @@ const sideBarItemData: SideBarItemData = {
     sub: {
       Profile: "/profile",
       Password: "/password",
-      Payment: "/payment",
     },
     icon: <FaCog className="text-xl" />,
   },
@@ -108,7 +111,9 @@ function SideBarItem({
           <div
             className="inline-flex items-center gap-5"
             onClick={() => {
-              setActive(displayName);
+              if (type !== "Drop") {
+                setActive(displayName);
+              }
             }}
           >
             {sideBarItemData[displayName].icon}

@@ -3,6 +3,7 @@ package com.healthub.healthHubServer.Service;
 import com.healthub.healthHubServer.DOA.Model.Consultation;
 import com.healthub.healthHubServer.DOA.Model.Enum.ConsultationStatus;
 import com.healthub.healthHubServer.DOA.Model.Medecin;
+import com.healthub.healthHubServer.DOA.Model.Patient;
 import com.healthub.healthHubServer.DOA.Repository.ConsultationRepository;
 import com.healthub.healthHubServer.Service.Manager.ManagerConsultation;
 import com.healthub.healthHubServer.Web.ControllerPatient;
@@ -11,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,16 +61,60 @@ public class ServiceConsultation implements ManagerConsultation {
         }
     }
 
+
+    // ================== Select by state consultation =======================
     @Override
-    public Optional<List<Consultation>> getConsultationPending(Medecin medecin) {
+    public Optional<List<Consultation>> getConsultationPending(Medecin medecin, Date dateConsultations) {
         try {
-            Optional<List<Consultation>> consultations = consultationRepository.findByMedecinAndStatus(medecin, ConsultationStatus.PENDING);
+            Optional<List<Consultation>> consultations = consultationRepository.findByMedecinAndStatus(medecin, ConsultationStatus.PENDING, dateConsultations);
             if (consultations.isPresent()) {
                 return consultations;
             }
             throw new Exception("Error occur getting consultation!!!");
         } catch (Exception e) {
             logger.warn(e.getMessage());
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<List<Consultation>> getConsultationDone(Medecin medecin, Date dateConsultations) {
+        try {
+            Optional<List<Consultation>> consultations = consultationRepository.findByMedecinAndStatus(medecin, ConsultationStatus.DONE, dateConsultations);
+            if (consultations.isPresent()) {
+                return consultations;
+            }
+            throw new Exception("Error occur getting consultation!!!");
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<List<Consultation>> getConsultationRejected(Medecin medecin, Date dateConsultations) {
+        try {
+            Optional<List<Consultation>> consultations = consultationRepository.findByMedecinAndStatus(medecin, ConsultationStatus.REJECTED, dateConsultations);
+            if (consultations.isPresent()) {
+                return consultations;
+            }
+            throw new Exception("Error occur getting consultation!!!");
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<Consultation> getConsultation(Consultation consultation, Medecin medecin, Patient patientId) {
+        try {
+            Optional<Consulation> consulation = consultationRepository.findByMedecinAndPatientConsulatationAndStatus(
+                   medecin,
+                    patientId,
+
+            );
+        }catch (Exception e){
+            System.out.println(e.getMessage());
             return Optional.empty();
         }
     }

@@ -19,7 +19,8 @@ public class Consultation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     Date date;
-    Time Heure;
+    Time StartConsultation;
+    Time EndConsultation;
     String Comment;
     @Builder.Default()
     ConsultationStatus Status = ConsultationStatus.PENDING;

@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button.tsx";
 import { useHeaderVisibility, useScrollEffect } from "@/hooks/useEffect/Effect";
 import { Link } from "react-router-dom";
 
-
-
 export const Header = () => {
   useScrollEffect();
   const isShown = useHeaderVisibility();
@@ -52,14 +50,16 @@ export const Header = () => {
             Services
           </li> */}
           {/* End Services Features */}
-          <li
-            className={
-              "hover:text-blues-500  aria-disabled:text-blues-500 transition-all ease-in-out "
-            }
-            aria-disabled={false}
-          >
-            Find Doctors
-          </li>
+          <Link to={"/FindDoctors"}>
+            <li
+              className={
+                "hover:text-blues-500  aria-disabled:text-blues-500 transition-all ease-in-out "
+              }
+              aria-disabled={false}
+            >
+              Find Doctors
+            </li>
+          </Link>
           <li
             className={
               "hover:text-blues-500  aria-disabled:text-blues-500 transition-all ease-in-out "

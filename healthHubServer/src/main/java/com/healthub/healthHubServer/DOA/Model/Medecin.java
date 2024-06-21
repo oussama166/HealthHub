@@ -2,13 +2,12 @@ package com.healthub.healthHubServer.DOA.Model;
 
 import com.healthub.healthHubServer.DOA.Model.Enum.MedicalSpecialty;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Min;
+import lombok.*;
 
 import java.util.List;
 
+@Builder
 @Entity
 @Getter
 @Setter
@@ -29,6 +28,8 @@ public class Medecin {
     String email;
     String password;
     String MapsUrl;
+    @Min(value = 3,message = "The price should be great than 3$ !!!")
+    Double Price;
     MedicalSpecialty specialty;
     @OneToMany(mappedBy = "medecin")
     private List<Consultation> consultations;

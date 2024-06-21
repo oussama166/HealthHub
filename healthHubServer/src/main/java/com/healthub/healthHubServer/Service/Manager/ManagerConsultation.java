@@ -2,8 +2,10 @@ package com.healthub.healthHubServer.Service.Manager;
 
 import com.healthub.healthHubServer.DOA.Model.Consultation;
 import com.healthub.healthHubServer.DOA.Model.Medecin;
+import com.healthub.healthHubServer.DOA.Model.Patient;
 import org.apache.tomcat.util.http.parser.MediaTypeCache;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +19,24 @@ public interface ManagerConsultation {
     );
 
     Optional<List<Consultation>> getConsultationPending(
-            Medecin medecin
+            Medecin medecin,
+            Date dateConsultations
+    );
+
+    Optional<List<Consultation>> getConsultationDone(
+            Medecin medecin,
+            Date dateConsultations
+    );
+
+    Optional<List<Consultation>> getConsultationRejected(
+            Medecin medecin,
+            Date dateConsultations
+    );
+
+    Optional<Consultation> getConsultation(
+            Consultation consultation,
+            Medecin medecin,
+            Patient patientId
     );
 
     Optional<Consultation> removeConsultaionById(

@@ -1,6 +1,7 @@
 package com.healthub.healthHubServer.DOA.Model.Enum;
 
 public enum ConsultationStatus {
+    REJECTED("Rejected"),
     PENDING("Pending"),
     DONE("Done");
 

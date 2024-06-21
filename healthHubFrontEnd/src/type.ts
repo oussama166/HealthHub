@@ -18,3 +18,14 @@ export interface DashboardContextType {
   active: string;
   setActive: (value: string) => void;
 }
+
+
+
+export interface JobDeskItemProps {
+  fill: boolean;
+  title: string;
+  titleClassName?: string;
+  infoClassName?: string;
+  info: string;
+  icon: React.SVGAttributes<SVGElement>;
+}

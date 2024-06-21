@@ -3,6 +3,7 @@ package com.healthub.healthHubServer.Web;
 import com.healthub.healthHubServer.DOA.Model.Consultation;
 import com.healthub.healthHubServer.DOA.Model.Medecin;
 import com.healthub.healthHubServer.Service.Manager.ManagerConsultation;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,10 +83,12 @@ public class ControllerConsultation {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<?> getConsultationPending(
-            @RequestBody Medecin medecin
+            @RequestBody Medecin medecin,
+            @Valid @RequestParam("consultationDate") Date dateConsulataionDate
+
     ) {
         try {
-            Optional<List<Consultation>> list = consultationManager.getConsultationPending(medecin);
+            Optional<List<Consultation>> list = consultationManager.getConsultationPending(medecin,dateConsulataionDate);
             if (list.isPresent()) {
                 return ResponseEntity.status(200).body(list.get());
             }
@@ -94,6 +98,52 @@ public class ControllerConsultation {
             return ResponseEntity.status(400).body(e.getMessage());
         }
     }
+
+    @GetMapping(
+            path="getConsultationDone",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<?> getConsultationDone(
+            @RequestBody Medecin medecin,
+            @Valid @RequestParam("consultationDate") Date dateConsulataionDate
+
+    ){
+        try {
+            Optional<List<Consultation>> list = consultationManager.getConsultationDone(medecin,dateConsulataionDate);
+            if (list.isPresent()) {
+                return ResponseEntity.status(200).body(list.get());
+            }
+            throw new Exception("This Doc hasn't any Done consultation !!!");
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
+    @GetMapping(
+            path="getConsultationRejected",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<?> getConsultationRejected(
+            @RequestBody Medecin medecin,
+            @Valid @RequestParam("consultationDate") Date dateConsulataionDate
+
+    ){
+        try {
+            Optional<List<Consultation>> list = consultationManager.getConsultationRejected(medecin,dateConsulataionDate);
+            if (list.isPresent()) {
+                return ResponseEntity.status(200).body(list.get());
+            }
+            throw new Exception("This Doc hasn't any Rejected consultation !!!");
+        } catch (Exception e) {
+            logger.warn(e.getMessage());
+            return ResponseEntity.status(400).body(e.getMessage());
+        }
+    }
+
+    // =========== Modification =========== //
+
 
     @GetMapping(
             path = "/removeConsultation",

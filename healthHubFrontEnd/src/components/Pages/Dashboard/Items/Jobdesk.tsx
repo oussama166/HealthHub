@@ -8,11 +8,15 @@ import { BiCalendarCheck } from "react-icons/bi";
 import { format } from "date-fns";
 import { MdOutlineMailOutline, MdOutlinePhone } from "react-icons/md";
 import { DataTable } from "@/components/ui/datatable";
-import { columnsConsultation, scheduleConsultation } from "@/components/ui/columns";
+import {
+  columnsConsultation,
+  scheduleConsultation,
+} from "@/components/ui/columns";
 
 // Getting the data from the manifest
 
 import { dataJobDesk } from "@/manifest.json";
+import { JobDeskItemProps } from "@/type";
 
 function Jobdesk() {
   return (
@@ -31,7 +35,7 @@ function Jobdesk() {
           <section
             className={cn(
               staticStyle.section,
-              `max-w-[30%] p-10 flex-col items-start gap-5 rounded-lg `
+              `max-w-[30%] max-h-[100vh] p-10 flex-col items-start justify-start gap-5 rounded-lg  `
             )}
           >
             {/* Start Info about doc  */}
@@ -129,22 +133,25 @@ function Jobdesk() {
             <h1 className="text-xl font-semibold">
               Schedule of the office day
             </h1>
-            <DataTable data={dataJobDesk as scheduleConsultation[]} columns={columnsConsultation} />
+            <DataTable
+              data={dataJobDesk as scheduleConsultation[]}
+              columns={columnsConsultation}
+              usePagination={true}
+            />
+
+            <h1 className="text-xl font-semibold">
+              Schedule of the online day
+            </h1>
+            <DataTable
+              data={dataJobDesk as scheduleConsultation[]}
+              columns={columnsConsultation}
+            />
           </section>
         </div>
         {/* End Title of the screen */}
       </section>
     </>
   );
-}
-
-interface JobDeskItemProps {
-  fill: boolean;
-  title: string;
-  titleClassName?: string;
-  infoClassName?: string;
-  info: string;
-  icon: React.SVGAttributes<SVGElement>;
 }
 
 const JobDeskItemComp: React.FC<JobDeskItemProps> = ({
