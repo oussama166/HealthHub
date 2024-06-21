@@ -18,10 +18,6 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
-    String name;
-    @Column(
-            unique = true
-    )
     String userName;
     @Column(
             unique = true
