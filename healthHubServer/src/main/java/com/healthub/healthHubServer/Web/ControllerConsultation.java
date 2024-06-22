@@ -20,7 +20,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/api/v1")
 @CrossOrigin(
-        value = "http://localhost:4200/"
+        value = "http://localhost:5173/"
 )
 public class ControllerConsultation {
 

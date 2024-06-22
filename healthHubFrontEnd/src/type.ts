@@ -34,6 +34,6 @@ export type Patient = {
   email: string;
   password: string;
   dossier_medicale: object;
-  consultations?: Array<any>;
-  avis?: Array<any>;
+  consultations?: Array<any>; // Add consultation type btw <any>
+  avis?: Array<any>; // Add Avis type btw <any>
 };

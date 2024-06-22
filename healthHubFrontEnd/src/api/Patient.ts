@@ -5,6 +5,7 @@ export const putPatients = async (data: Patient) => {
   return axios.post("http://localhost:8083/api/v1/createPatient", {
     headers: {
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
     },
     data: {
       id: data.id,
@@ -18,4 +19,3 @@ export const putPatients = async (data: Patient) => {
     },
   });
 };
-
