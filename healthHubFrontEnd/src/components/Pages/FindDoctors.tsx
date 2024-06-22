@@ -106,7 +106,6 @@ const DoctorCard = ({
   fullName,
   speciality,
   rating,
-  image,
   price,
 }: {
   fullName: string;

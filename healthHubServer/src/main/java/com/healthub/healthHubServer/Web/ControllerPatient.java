@@ -18,7 +18,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/api/v1")
 @CrossOrigin(
-        value = "http://localhost:5173/"
+        value = "http://localhost:5173"
 )
 public class ControllerPatient {
 
@@ -49,9 +49,9 @@ public class ControllerPatient {
             // he needs to create empty dossier medical
 
             if (!patientInfo.isPresent()) {
-                throw new Exception("Patient can not be created !!!");
-            }
                 return ResponseEntity.status(200).body(patientInfo);
+            }
+            throw new Exception("Patient can not be created !!!");
         } catch (Exception e) {
             logger.warn(e.getMessage());
             return ResponseEntity.status(400).body(e.getMessage());

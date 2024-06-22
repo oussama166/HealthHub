@@ -32,6 +32,7 @@ public class ServiceMedecin implements ManagerMedecin {
     public Optional<Medecin> createMedecin(Medecin info) {
         try {
             Optional<Medecin> medecin = medecinRepository.findByUserNameAndEmail(info.getUserName(), info.getEmail());
+            logger.info(medecin.isPresent() ? medecin.get().getUserName() : info.getMapsUrl());
             if (medecin.isPresent()) {
                 throw new Exception("Medecin already exist");
             }

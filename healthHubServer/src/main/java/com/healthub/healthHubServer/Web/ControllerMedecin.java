@@ -71,7 +71,7 @@ public class ControllerMedecin {
         }
     }
 
-    @GetMapping(
+    @PostMapping(
             path = "/getDoc",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE

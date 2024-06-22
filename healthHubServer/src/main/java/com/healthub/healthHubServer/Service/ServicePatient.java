@@ -44,6 +44,16 @@ public class ServicePatient implements ManagerPatient {
             // Save the patient
             patientRepository.save(patient);
 
+            Dossier_Medicale dossierMedicale = new Dossier_Medicale();
+            dossierMedicale.setTraitement(patient.getDossier_medicale().getTraitement());
+            dossierMedicale.setAntecedent(patient.getDossier_medicale().getAntecedent());
+            dossierMedicale.setAllergies(patient.getDossier_medicale().getAllergies());
+            dossierMedicale.setPatientDossier(patientRepository.findByName(patient.getUserName()).get());
+
+
+            dossier_MedicaleRepository.save(dossierMedicale);
+
+
             return Optional.of(patient);
 
         } catch (Exception e) {

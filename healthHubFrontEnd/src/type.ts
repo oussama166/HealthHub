@@ -37,3 +37,17 @@ export type Patient = {
   consultations?: Array<any>; // Add consultation type btw <any>
   avis?: Array<any>; // Add Avis type btw <any>
 };
+
+export type Doctor = {
+  id: number;
+  name: string;
+  userName: string;
+  email: string;
+  password: string;
+  mapsUrl: string;
+  ville: string;
+  price: number;
+  specialty: string;
+  consultations?: Array<any>; // Add consultation type btw <any>
+  avis?: Array<any>; // Add Avis type btw <any>
+};
