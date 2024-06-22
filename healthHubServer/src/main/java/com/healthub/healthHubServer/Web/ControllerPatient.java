@@ -7,6 +7,7 @@ import com.healthub.healthHubServer.Service.Manager.ManagerPatient;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/api/v1")
 @CrossOrigin(
-        value = "http://localhost:5173"
+        value = "http://localhost:5173/"
 )
 public class ControllerPatient {
 
@@ -38,23 +39,22 @@ public class ControllerPatient {
     // ========== CREATE ========= //
     @PostMapping(
             path = "/createPatient",
-            consumes = MediaType.APPLICATION_JSON_VALUE,
+            consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE },
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<?> createPatient(
-            @RequestBody Patient patient
-    ) {
+    public ResponseEntity<?> createPatient(@RequestBody Patient patient) {
         try {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
-            // he needs to create empty dossier medical
 
-            if (!patientInfo.isPresent()) {
-                return ResponseEntity.status(200).body(patientInfo);
+            if (patientInfo.isPresent()) {
+                logger.info("Patient created successfully with email: " + patientInfo.get().getEmail());
+                return ResponseEntity.status(HttpStatus.OK).body(patientInfo.get());
+            } else {
+                throw new Exception("Patient creation failed or returned null.");
             }
-            throw new Exception("Patient can not be created !!!");
         } catch (Exception e) {
-            logger.warn(e.getMessage());
-            return ResponseEntity.status(400).body(e.getMessage());
+            logger.error("Error creating patient", e);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 

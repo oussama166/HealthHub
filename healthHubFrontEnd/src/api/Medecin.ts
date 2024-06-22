@@ -20,9 +20,9 @@ export const createDoctor = async (data: Doctor) => {
     });
 };
 
-export const signAsDoctor = async (data: Doctor) => {
-    
-}
+// export const signAsDoctor = async (data: Doctor) => {
+
+// }
 export const getDoctors = async () => {
   return await axios
     .get(`${host}getDocs`)

@@ -1,6 +1,32 @@
-
+import { postPatients } from "@/api/Patient";
+import { Patient } from "@/type";
 export const Registration = () => {
-  
+  const handleSubmit = async () => {
+    const name = (
+      document.querySelector("input[name=name]") as HTMLInputElement
+    ).value;
+    const email = (
+      document.querySelector("input[name=email]") as HTMLInputElement
+    ).value;
+    const password = (
+      document.querySelector("input[name=password]") as HTMLInputElement
+    ).value;
+    await postPatients({
+      
+  userName: "JohnDoe",
+  email: "john.doe@example.com",
+  password: "password123",
+  dossier_medicale: {
+    antecedent: "Some antecedents",
+    allergies: "Some allergies",
+    traitement: "Some treatment"
+  },
+  consultations: [],
+  avis: []
+
+
+    });
+  };
   return (
     <div className="font-[sans-serif] bg-white text-black  flex ">
       {/* Image Section */}
@@ -25,7 +51,10 @@ export const Registration = () => {
 
       {/* Form Section */}
       <div className="w-full flex items-center md:p-8 p-6  h-full lg:w-11/12 lg:ml-auto">
-        <form className="max-w-lg w-full mx-auto">
+        <form
+          className="max-w-lg w-full mx-auto"
+          onSubmit={() => handleSubmit()}
+        >
           <div className="mb-12">
             <h3 className="text-3xl font-bold text-healthHub-300">
               Create an account
@@ -37,7 +66,6 @@ export const Registration = () => {
               <input
                 name="name"
                 type="text"
-                required
                 className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-healthHub-700 px-2 py-3 outline-none"
                 placeholder="Enter name"
               />
@@ -59,7 +87,6 @@ export const Registration = () => {
               <input
                 name="email"
                 type="email"
-                required
                 className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-healthHub-700 px-2 py-3 outline-none"
                 placeholder="Enter email"
               />
@@ -96,7 +123,6 @@ export const Registration = () => {
               <input
                 name="password"
                 type="password"
-                required
                 className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-healthHub-700 px-2 py-3 outline-none"
                 placeholder="Enter password"
               />

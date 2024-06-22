@@ -36,31 +36,40 @@ public class ServicePatient implements ManagerPatient {
     @Override
     public Optional<Patient> createPatient(Patient patient) {
         try {
-            Optional<Patient> patientInfo = patientRepository.findByAll(patient);
-            if (patientInfo.isPresent()) {
-                throw new Exception("We cannot create Patient already exist!!!");
+            logger.info("Received patient data: " + patient.toString());
+
+            // Check if patient with the same email already exists
+            Optional<Patient> existingPatient = patientRepository.findByAll(patient.getEmail());
+            System.out.println(existingPatient.isPresent());
+            if (existingPatient.isPresent()) {
+                logger.info(existingPatient.get().getEmail());
+                throw new IllegalArgumentException("Patient with email already exists.");
             }
 
+            System.out.println(patient.getUserName());
             // Save the patient
-            patientRepository.save(patient);
+            Patient savedPatient = patientRepository.save(patient);
 
+            // Creating a new Dossier_Medicale for the patient
             Dossier_Medicale dossierMedicale = new Dossier_Medicale();
-            dossierMedicale.setTraitement(patient.getDossier_medicale().getTraitement());
-            dossierMedicale.setAntecedent(patient.getDossier_medicale().getAntecedent());
+            dossierMedicale.setTraitement("test");
+            dossierMedicale.setAntecedent("test");
             dossierMedicale.setAllergies(patient.getDossier_medicale().getAllergies());
-            dossierMedicale.setPatientDossier(patientRepository.findByName(patient.getUserName()).get());
+            dossierMedicale.setPatientDossier(savedPatient);
 
-
+            // Saving the dossierMedicale
             dossier_MedicaleRepository.save(dossierMedicale);
 
-
-            return Optional.of(patient);
+            // Log and return the saved patient
+            logger.info("Patient created successfully with email: " + savedPatient.getEmail());
+            return Optional.of(savedPatient);
 
         } catch (Exception e) {
-            logger.warn(e.getMessage());
+            logger.error("Error creating patient", e);
             return Optional.empty();
         }
     }
+
 
     // ========== CONNECTION ========= //
 

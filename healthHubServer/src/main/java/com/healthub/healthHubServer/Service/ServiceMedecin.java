@@ -32,7 +32,6 @@ public class ServiceMedecin implements ManagerMedecin {
     public Optional<Medecin> createMedecin(Medecin info) {
         try {
             Optional<Medecin> medecin = medecinRepository.findByUserNameAndEmail(info.getUserName(), info.getEmail());
-            logger.info(medecin.isPresent() ? medecin.get().getUserName() : info.getMapsUrl());
             if (medecin.isPresent()) {
                 throw new Exception("Medecin already exist");
             }
@@ -41,17 +40,6 @@ public class ServiceMedecin implements ManagerMedecin {
         } catch (Exception e) {
             logger.warn(e.getMessage());
             return Optional.empty();
-        }
-    }
-
-    // ========== CONNECT ========= //
-
-    @Override
-    public Optional<Medecin> connectMedecin(String email, String password) {
-        try {
-            Optional<Medecin> findMedEmAndPass = medecinRepository.findByEmailAndPassword()
-        } catch (Exception e) {
-
         }
     }
 

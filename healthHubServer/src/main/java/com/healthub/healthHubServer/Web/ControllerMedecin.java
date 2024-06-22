@@ -39,16 +39,16 @@ public class ControllerMedecin {
     public ResponseEntity<?> createMedecin(
             @RequestBody Medecin medecin
     ) {
-        try {
-            Optional<Medecin> medecinOptional = managerMedecin.createMedecin(medecin);
-            if (medecinOptional.isPresent()) {
-                return ResponseEntity.status(200).body(medecinOptional.get());
+        try{
+            Optional<Medecin> result = managerMedecin.createMedecin(medecin);
+            if(result.isPresent()) {
+                return ResponseEntity.ok(result.get());
             }
-            throw new Exception("Create doc impossible!!!");
-        } catch (Exception e) {
-            logger.warn(e.getMessage());
-            return ResponseEntity.status(400).body(e.getMessage());
+            throw new Exception("Can not be created !!!");
+        }catch  (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
+
 
     }
 
