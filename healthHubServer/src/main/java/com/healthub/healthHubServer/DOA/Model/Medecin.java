@@ -28,6 +28,7 @@ public class Medecin {
     String email;
     String password;
     String MapsUrl;
+    String Ville;
     @Min(value = 3,message = "The price should be great than 3$ !!!")
     Double Price;
     MedicalSpecialty specialty;

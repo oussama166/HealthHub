@@ -13,13 +13,10 @@ export interface SideBarItemData {
   [key: string]: SideBarItem;
 }
 
-
 export interface DashboardContextType {
   active: string;
   setActive: (value: string) => void;
 }
-
-
 
 export interface JobDeskItemProps {
   fill: boolean;
@@ -29,3 +26,14 @@ export interface JobDeskItemProps {
   info: string;
   icon: React.SVGAttributes<SVGElement>;
 }
+
+export type Patient = {
+  id: number;
+  name: string;
+  userName: string;
+  email: string;
+  password: string;
+  dossier_medicale: object;
+  consultations?: Array<any>;
+  avis?: Array<any>;
+};

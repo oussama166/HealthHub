@@ -34,9 +34,9 @@ public interface ManagerConsultation {
     );
 
     Optional<Consultation> getConsultation(
-            Consultation consultation,
             Medecin medecin,
-            Patient patientId
+            Patient patientId,
+            Date consultationDate
     );
 
     Optional<Consultation> removeConsultaionById(

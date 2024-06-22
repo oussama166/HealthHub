@@ -1,4 +1,4 @@
-package com.healthub.healthHubServer.Config;
+/*package com.healthub.healthHubServer.Config;
 
 import com.healthub.healthHubServer.DOA.Model.Patient;
 import com.healthub.healthHubServer.DOA.Repository.PatientRepository;
@@ -27,3 +27,6 @@ public class PatientDetailService implements UserDetailsService {
                 .build();
     }
 }
+
+
+ */

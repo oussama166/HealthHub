@@ -1,6 +1,8 @@
 package com.healthub.healthHubServer.Web;
 
+import com.healthub.healthHubServer.DOA.Model.Dossier_Medicale;
 import com.healthub.healthHubServer.DOA.Model.Patient;
+import com.healthub.healthHubServer.Service.Manager.ManagerDossier_Medical;
 import com.healthub.healthHubServer.Service.Manager.ManagerPatient;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -22,13 +24,15 @@ public class ControllerPatient {
 
     //  Inject the patient manager into the controller
     private final ManagerPatient managerPatient;
+    private final ManagerDossier_Medical managerDossier_Medical;
 
 
     //  To log the result in terminal
     private static final Logger logger = LoggerFactory.getLogger(ControllerPatient.class);
 
-    public ControllerPatient(ManagerPatient managerPatient) {
+    public ControllerPatient(ManagerPatient managerPatient, ManagerDossier_Medical managerDossier_Medical) {
         this.managerPatient = managerPatient;
+        this.managerDossier_Medical = managerDossier_Medical;
     }
 
     // ========== CREATE ========= //
@@ -44,10 +48,10 @@ public class ControllerPatient {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
             // he needs to create empty dossier medical
 
-            if (patientInfo.isPresent()) {
-                return ResponseEntity.status(200).body(patientInfo);
+            if (!patientInfo.isPresent()) {
+                throw new Exception("Patient can not be created !!!");
             }
-            throw new Exception("Patient can not created!!!");
+                return ResponseEntity.status(200).body(patientInfo);
         } catch (Exception e) {
             logger.warn(e.getMessage());
             return ResponseEntity.status(400).body(e.getMessage());
@@ -77,7 +81,7 @@ public class ControllerPatient {
 
     // ========== UPDATE ========= //
     @PostMapping(
-            path="/updatePatient",
+            path = "/updatePatient",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<?> updatePatient(
@@ -98,19 +102,19 @@ public class ControllerPatient {
 
     // ========== DELETE ========= //
     @DeleteMapping(
-            path="/deletePatient/{idUser}",
+            path = "/deletePatient/{idUser}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<?> deletePatient(
-           @PathVariable("idUser") int id
-    ){
+            @PathVariable("idUser") int id
+    ) {
         try {
             Optional<Patient> patient = managerPatient.removePatient(id);
-            if(patient.isPresent()){
+            if (patient.isPresent()) {
                 return ResponseEntity.status(200).body(patient.get());
             }
             throw new Exception("User can not deleted !!!");
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.warn(e.getMessage());
             return ResponseEntity.status(400).body(e.getMessage());
         }

@@ -47,11 +47,18 @@ function Doctor() {
 
 const ReviewComp = () => {
   return (
-    <div className="flex flex-col items-start">
-      <h1 className="text-2xl font-semibold text-blues-500 inline-flex gap-2 items-center"><FaStar className=""/> 5</h1>
-      <div className="flex flex-row items-center gap-4">
-        <div className="flex flex-row items-center gap-2">Hellow</div>
+    <div className="max-w-[600px] p-5 flex flex-col items-start rounded-md border border-black/20">
+      <div className="flex flex-col gap-2">
+        <h1 className="text-xl font-medium">Client name</h1>
+        <span className="inline-flex justify-start items-center gap-1 font-semibold text-lg text-neutral-500">
+          <FaStar className="text-yellow-400" /> 5.0
+        </span>
       </div>
+      <p className="text-base leading-relaxed tracking-normal text-black/70 font-medium">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.
+      </p>
     </div>
   );
 };

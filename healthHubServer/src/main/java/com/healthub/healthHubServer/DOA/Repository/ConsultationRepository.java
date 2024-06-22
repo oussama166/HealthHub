@@ -8,10 +8,7 @@ import org.apache.tomcat.util.bcel.Const;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public interface ConsultationRepository extends JpaRepository<Consultation, Integer> {
     @Query(
@@ -31,12 +28,5 @@ public interface ConsultationRepository extends JpaRepository<Consultation, Inte
     @Query("select (count(c) > 0) from Consultation c where c.patientConsulatation.id = ?1 and c.medecin.id = ?2 and c.Status = ?3")
     boolean exitsConsultationPending(int idP, int idD, ConsultationStatus Status);
 
-    @Query(
-            value = "SELECT ct FROM Consultation ct WHERE ct.medecin = ?1 AND  ct.patientConsulatation = ?2 AND ct.Status = ?3"
-    )
-    Optional<Consultation> findByMedecinAndPatientConsulatationAndStatus(
-            Medecin medecin,
-            Patient patientConsulatation,
-
-            ConsultationStatus Status);
+    Optional<Set<Consultation>> findByMedecinAndDateAndPatientConsulatation(Medecin medecin, Date date, Patient patientConsulatation);
 }

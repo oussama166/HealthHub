@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @Slf4j
@@ -106,14 +107,19 @@ public class ServiceConsultation implements ManagerConsultation {
     }
 
     @Override
-    public Optional<Consultation> getConsultation(Consultation consultation, Medecin medecin, Patient patientId) {
+    public Optional<Consultation> getConsultation(Medecin medecin, Patient patientId, Date ConsultationDate) {
         try {
-            Optional<Consulation> consulation = consultationRepository.findByMedecinAndPatientConsulatationAndStatus(
-                   medecin,
-                    patientId,
-
+            Optional<Set<Consultation>> consultations = consultationRepository.findByMedecinAndDateAndPatientConsulatation(
+                    medecin,
+                    ConsultationDate,
+                    patientId
             );
-        }catch (Exception e){
+            if (consultations.isPresent()) {
+                return consultations.get().stream().findFirst();
+            } else {
+                throw new Exception("Consultation impossible !!!");
+            }
+        } catch (Exception e) {
             System.out.println(e.getMessage());
             return Optional.empty();
         }
@@ -133,4 +139,5 @@ public class ServiceConsultation implements ManagerConsultation {
             return Optional.empty();
         }
     }
+
 }

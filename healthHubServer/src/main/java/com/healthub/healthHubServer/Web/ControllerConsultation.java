@@ -88,7 +88,7 @@ public class ControllerConsultation {
 
     ) {
         try {
-            Optional<List<Consultation>> list = consultationManager.getConsultationPending(medecin,dateConsulataionDate);
+            Optional<List<Consultation>> list = consultationManager.getConsultationPending(medecin, dateConsulataionDate);
             if (list.isPresent()) {
                 return ResponseEntity.status(200).body(list.get());
             }
@@ -100,7 +100,7 @@ public class ControllerConsultation {
     }
 
     @GetMapping(
-            path="getConsultationDone",
+            path = "getConsultationDone",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -108,9 +108,9 @@ public class ControllerConsultation {
             @RequestBody Medecin medecin,
             @Valid @RequestParam("consultationDate") Date dateConsulataionDate
 
-    ){
+    ) {
         try {
-            Optional<List<Consultation>> list = consultationManager.getConsultationDone(medecin,dateConsulataionDate);
+            Optional<List<Consultation>> list = consultationManager.getConsultationDone(medecin, dateConsulataionDate);
             if (list.isPresent()) {
                 return ResponseEntity.status(200).body(list.get());
             }
@@ -120,8 +120,9 @@ public class ControllerConsultation {
             return ResponseEntity.status(400).body(e.getMessage());
         }
     }
+
     @GetMapping(
-            path="getConsultationRejected",
+            path = "getConsultationRejected",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
@@ -129,9 +130,9 @@ public class ControllerConsultation {
             @RequestBody Medecin medecin,
             @Valid @RequestParam("consultationDate") Date dateConsulataionDate
 
-    ){
+    ) {
         try {
-            Optional<List<Consultation>> list = consultationManager.getConsultationRejected(medecin,dateConsulataionDate);
+            Optional<List<Consultation>> list = consultationManager.getConsultationRejected(medecin, dateConsulataionDate);
             if (list.isPresent()) {
                 return ResponseEntity.status(200).body(list.get());
             }
