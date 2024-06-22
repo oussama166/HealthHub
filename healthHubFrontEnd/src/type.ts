@@ -29,7 +29,6 @@ export interface JobDeskItemProps {
 
 export type Patient = {
   id: number;
-  name: string;
   userName: string;
   email: string;
   password: string;

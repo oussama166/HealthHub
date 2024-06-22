@@ -1,6 +1,16 @@
-
+import { PostPatients } from "@/api/Patient";
+import { Patient } from "@/type";
 export const Registration = () => {
-  
+    const Patient: Patient = {
+      id: 1,
+      userName: "abel",
+      email: "abdel@gmail.com",
+      password: "Roadnk",
+      dossier_medicale: {},
+      consultations: [],
+      avis:[]
+      };
+  PostPatients(Patient);
   return (
     <div className="font-[sans-serif] bg-white text-black  flex ">
       {/* Image Section */}

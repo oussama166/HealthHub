@@ -47,8 +47,9 @@ public class ControllerPatient {
         try {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
             // he needs to create empty dossier medical
-
-            if (!patientInfo.isPresent()) {
+            System.out.println(patient.getUserName());
+            System.out.println(patientInfo);
+            if (patientInfo.isPresent()) {
                 return ResponseEntity.status(200).body(patientInfo);
             }
             throw new Exception("Patient can not be created !!!");

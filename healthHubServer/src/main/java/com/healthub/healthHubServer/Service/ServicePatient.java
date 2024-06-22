@@ -36,7 +36,7 @@ public class ServicePatient implements ManagerPatient {
     @Override
     public Optional<Patient> createPatient(Patient patient) {
         try {
-            Optional<Patient> patientInfo = patientRepository.findByAll(patient);
+            Optional<Patient> patientInfo = patientRepository.findByAll(patient.getEmail());
             if (patientInfo.isPresent()) {
                 throw new Exception("We cannot create Patient already exist!!!");
             }
