@@ -10,6 +10,7 @@ import { Footer } from "./components/Static/Footer";
 import { Login } from "./components/Pages/Login";
 import { FindDoctors } from "./components/Pages/FindDoctors";
 import Doctor from "./components/Pages/Doctor";
+import { DossierMedicale } from "./components/Pages/Dossier-medicale";
 // import Servicies from "./components/Pages/Servicies";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/FindDoctors" element={<FindDoctors />} />
             <Route path="/Doctor/:id" element={<Doctor />} />
+            <Route path="/DossierMedicale" element={<DossierMedicale />} />
             {/* As Features */}
             {/* <Route path="/Services" element={<Servicies />} /> */}
             <Route path="/Dashboard" element={<Dashboard />} />

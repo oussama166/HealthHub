@@ -72,7 +72,6 @@ public class ServicePatient implements ManagerPatient {
             if (patientInfo.isPresent()) {
                 patientInfo.get().setConsultations(patient.getConsultations());
                 patientInfo.get().setUserName(patient.getUserName());
-                patientInfo.get().setName(patient.getName());
                 patientInfo.get().setEmail(patient.getEmail());
                 patientInfo.get().setPassword(patient.getPassword());
                 patientRepository.save(patientInfo.get());
