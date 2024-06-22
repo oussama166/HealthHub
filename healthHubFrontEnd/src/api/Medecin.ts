@@ -8,6 +8,7 @@ export const createDoctor = async (data: Doctor) => {
       headers: {
         "Content-Type": "application/json",
       },
+      
     })
     .then((res) => {
       localStorage.setItem("doctor", JSON.stringify(res.data));
@@ -19,6 +20,9 @@ export const createDoctor = async (data: Doctor) => {
     });
 };
 
+export const signAsDoctor = async (data: Doctor) => {
+    
+}
 export const getDoctors = async () => {
   return await axios
     .get(`${host}getDocs`)

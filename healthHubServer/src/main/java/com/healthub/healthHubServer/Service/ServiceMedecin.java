@@ -44,6 +44,17 @@ public class ServiceMedecin implements ManagerMedecin {
         }
     }
 
+    // ========== CONNECT ========= //
+
+    @Override
+    public Optional<Medecin> connectMedecin(String email, String password) {
+        try {
+            Optional<Medecin> findMedEmAndPass = medecinRepository.findByEmailAndPassword()
+        } catch (Exception e) {
+
+        }
+    }
+
     // ========== SELECT ========= //
 
     // This is for getting all the users in db

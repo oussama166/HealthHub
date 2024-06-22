@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface PatientRepository extends JpaRepository<Patient, Integer> {
     @Query(
-            value="SELECT pt FROM Patient pt WHERE pt = ?1"
+            value="SELECT pt FROM Patient pt WHERE pt. = ?1"
     )
     Optional<Patient> findByAll(Patient patient);
     @Query(

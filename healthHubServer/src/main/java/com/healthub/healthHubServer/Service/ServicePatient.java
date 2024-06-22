@@ -62,6 +62,7 @@ public class ServicePatient implements ManagerPatient {
         }
     }
 
+    // ========== CONNECTION ========= //
 
     // ========== SELECT ========= //
     @Override

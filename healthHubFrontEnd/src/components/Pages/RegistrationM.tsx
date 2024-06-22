@@ -8,11 +8,12 @@ import {
 } from "@/components/ui/select";
 import { speciality } from "@/manifest.json";
 import { Doctor } from "@/type";
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const RegistrationM = () => {
-  const refDrop = useRef<any>(null);
-  const [isConnected, connected] = useState(false);
+  const refDrop = useRef<HTMLSpanElement>(null);
+  const navigation = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,7 +31,10 @@ export const RegistrationM = () => {
       avis: [],
     };
     const isCn = await createDoctor(data);
-    connected(isCn);
+    if (isCn) {
+      alert("Doctor created successfully");
+      navigation("/Login");
+    }
   };
   return (
     <div className="font-[sans-serif] bg-white text-black  flex">

@@ -17,6 +17,8 @@ public interface ManagerMedecin {
     // This is for getting all the users in db
     Optional<List<Medecin>> getMedecins();
 
+    Optional<Medecin> connectMedecin(String email, String password);
+
     // This is for getting user by all info of the user
     Optional<List<Medecin>> getMedecin(
             Medecin medecin

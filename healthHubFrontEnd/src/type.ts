@@ -51,3 +51,4 @@ export type Doctor = {
   consultations?: Array<any>; // Add consultation type btw <any>
   avis?: Array<any>; // Add Avis type btw <any>
 };
+
