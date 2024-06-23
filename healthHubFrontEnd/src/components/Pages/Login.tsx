@@ -1,12 +1,23 @@
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { Label } from "../ui/label";
 import { Checkbox } from "../ui/checkbox";
+import { AuthContext } from "@/App";
+import { AuthContextType } from "@/type";
 
 export const Login = () => {
+  const context: AuthContextType = useContext(AuthContext);
   const emailRef = useRef<HTMLInputElement | null>(null);
   const passwordRef = useRef<HTMLInputElement | null>(null);
 
-  
+  useEffect(() => {
+    if (context.isLogged) {
+      console.log("User is logged in");
+    }
+    if (context.user != null) {
+      console.warn(JSON.parse(context.user));
+      console.log(context.typeUser);
+    }
+  });
 
   return (
     <div className="font-[sans-serif] h-screen bg-white text-black  flex">
@@ -101,7 +112,9 @@ export const Login = () => {
               id="terms"
               className="border-black/20  data-[state=checked]:bg-blues-500 data-[state=checked]:text-white cursor-pointer"
             />
-            <Label htmlFor="terms" className="cursor-pointer">You want to connect as Doctor?</Label>
+            <Label htmlFor="terms" className="cursor-pointer">
+              You want to connect as Doctor?
+            </Label>
           </div>
           <div className="mt-12">
             <button

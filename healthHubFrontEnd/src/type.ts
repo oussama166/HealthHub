@@ -29,13 +29,12 @@ export interface JobDeskItemProps {
 
 export type Patient = {
   id: number;
-  name: string;
   userName: string;
   email: string;
   password: string;
-  dossier_medicale: object;
+  dossier_medicale: DossierMedical;
   consultations: Array<any>; // Add consultation type btw <any>
-  avis: L<any>; // Add Avis type btw <any>
+  avis: Array<any>; // Add Avis type btw <any>
 };
 
 export type Doctor = {
@@ -51,4 +50,20 @@ export type Doctor = {
   consultations?: Array<any>; // Add consultation type btw <any>
   avis?: Array<any>; // Add Avis type btw <any>
 };
+interface DossierMedical {
+  id?: number;
+  antecedent: string;
+  allergies: string;
+  traitement: string;
+}
 
+
+
+export interface AuthContextType {
+  isLogged: boolean;
+  setIsLogged: (isLogged: boolean) => void;
+  user: string | null;
+  setUser: (user: string | null) => void;
+  typeUser: "Doctor" | "Patient";
+  setTypeUser: (typeUser: "Doctor" | "Patient") => void;
+}

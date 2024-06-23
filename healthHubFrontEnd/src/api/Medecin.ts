@@ -11,6 +11,7 @@ export const createDoctor = async (data: Doctor) => {
       
     })
     .then((res) => {
+      localStorage.clear();
       localStorage.setItem("doctor", JSON.stringify(res.data));
       return true;
     })

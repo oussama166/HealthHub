@@ -31,4 +31,7 @@ public interface MedecinRepository extends JpaRepository<Medecin, Integer> {
     Optional<List<Medecin>> findAllBy(Medecin md);
 
     Optional<Medecin> findByEmailAndPassword(String email, String password);
+
+    @Query("select (count(m) > 0) from Medecin m where m.email = ?1 and m.password = ?2")
+    boolean connectMed(String email, String password);
 }

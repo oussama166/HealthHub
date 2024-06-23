@@ -16,4 +16,7 @@ public interface PatientRepository extends JpaRepository<Patient, Integer> {
             value = "SELECT pt FROM Patient pt WHERE pt.userName LIKE ?1"
     )
     Optional<Patient> findByName(String username);
+
+    @Query("select (count(p) > 0) from Patient p where p.email = ?1 and p.password = ?2")
+    boolean connectPatient(String email, String password);
 }

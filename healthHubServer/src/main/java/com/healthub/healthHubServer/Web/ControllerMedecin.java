@@ -39,13 +39,13 @@ public class ControllerMedecin {
     public ResponseEntity<?> createMedecin(
             @RequestBody Medecin medecin
     ) {
-        try{
+        try {
             Optional<Medecin> result = managerMedecin.createMedecin(medecin);
-            if(result.isPresent()) {
+            if (result.isPresent()) {
                 return ResponseEntity.ok(result.get());
             }
             throw new Exception("Can not be created !!!");
-        }catch  (Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
 

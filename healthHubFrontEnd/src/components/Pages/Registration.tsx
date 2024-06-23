@@ -11,21 +11,21 @@ export const Registration = () => {
     const password = (
       document.querySelector("input[name=password]") as HTMLInputElement
     ).value;
-    await postPatients({
-      
-  userName: "JohnDoe",
-  email: "john.doe@example.com",
-  password: "password123",
-  dossier_medicale: {
-    antecedent: "Some antecedents",
-    allergies: "Some allergies",
-    traitement: "Some treatment"
-  },
-  consultations: [],
-  avis: []
-
-
-    });
+    const patient: Patient = {
+      id: 0,
+      userName: name,
+      email: email,
+      password: password,
+      dossier_medicale: {
+        id: 0,
+        antecedent: "Some antecedents",
+        allergies: "Some allergies",
+        traitement: "Some treatment",
+      },
+      consultations: [],
+      avis: [],
+    };
+    await postPatients(patient);
   };
   return (
     <div className="font-[sans-serif] bg-white text-black  flex ">

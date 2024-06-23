@@ -47,7 +47,7 @@ public class ControllerPatient {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
 
             if (patientInfo.isPresent()) {
-                logger.info("Patient created successfully with email: " + patientInfo.get().getEmail());
+                logger.info("Patient created successfully with email: " + patientInfo.get());
                 return ResponseEntity.status(HttpStatus.OK).body(patientInfo.get());
             } else {
                 throw new Exception("Patient creation failed or returned null.");
@@ -57,6 +57,8 @@ public class ControllerPatient {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
+
+
 
     // ========== SELECT ========= //
     @GetMapping(
