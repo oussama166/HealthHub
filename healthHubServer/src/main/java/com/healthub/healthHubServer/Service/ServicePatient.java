@@ -89,6 +89,7 @@ public class ServicePatient implements ManagerPatient {
                 patientInfo.get().setUserName(patient.getUserName());
                 patientInfo.get().setEmail(patient.getEmail());
                 patientInfo.get().setPassword(patient.getPassword());
+                patientInfo.get().setDossier_medicale(patient.getDossier_medicale());
                 patientRepository.save(patientInfo.get());
                 return patientInfo;
             }

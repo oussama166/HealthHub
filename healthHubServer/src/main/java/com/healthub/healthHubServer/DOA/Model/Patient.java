@@ -24,6 +24,7 @@ public class Patient {
     )
     String email;
     String password;
+    String tel;
     @JsonManagedReference
     @OneToOne(mappedBy = "patientDossier", cascade = CascadeType.ALL)
     private Dossier_Medicale dossier_medicale;
