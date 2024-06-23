@@ -1,30 +1,38 @@
-// import { useNavigate } from "react-router-dom";
+import { putPatients } from "@/api/Patient";
+import { useNavigate } from "react-router-dom";
 export const DossierMedicale = () => {
-  // const navigate = useNavigate();
-  // const handleSubmit = async () => {
-  //   const Antecedent = (
-  //     document.querySelector("input[name=Antecedent]") as HTMLInputElement
-  //   ).value;
-  //   const Allergies = (
-  //     document.querySelector("input[name=Allergies]") as HTMLInputElement
-  //   ).value;
-  //   const Traitement = (
-  //     document.querySelector("input[name=Traitement]") as HTMLInputElement
-  //   ).value;
-  //   await putPatients({
-  //     userName: "",
-  //     email: "",
-  //     password: "",
-  //     dossier_medicale: {
-  //       antecedent: Antecedent,
-  //       allergies: Allergies,
-  //       traitement: Traitement,
-  //     },
-  //     consultations: [],
-  //     avis: [],
-  //     id: 0,
-  //   });
-  // };
+  const navigate = useNavigate();
+  let patient=localStorage.getItem("patient");
+ 
+  const handleSubmit = async () => {
+    const Antecedent = (
+      document.querySelector("input[name=Antecedent]") as HTMLInputElement
+    ).value;
+    const Allergies = (
+      document.querySelector("input[name=Allergies]") as HTMLInputElement
+    ).value;
+    const Traitement = (
+      document.querySelector("input[name=Traitement]") as HTMLInputElement
+    ).value;
+     if (patient != null){
+  const patientj= JSON.parse(patient);
+    await putPatients({
+      id: patientj.id,
+      userName: patientj.userName,
+      email: patientj.email,
+      password: patientj.password,
+      dossier_medicale: {
+        id:patientj.dossier_medicale.id,
+        antecedent: Antecedent,
+        allergies: Allergies,
+        traitement: Traitement,
+      },
+      consultations: [],
+      avis: [],
+      
+    });
+   }
+  };
   return (
     <div className="font-[sans-serif] h-screen bg-white text-black  flex">
       {/* Image Section */}
@@ -50,7 +58,9 @@ export const DossierMedicale = () => {
       {/* Form Section */}
       <div className="w-full flex items-center md:p-8 p-6  h-full lg:w-11/12 lg:ml-auto">
         <form
-          onSubmit={() => handleSubmit()}
+          onSubmit={() =>{ handleSubmit();        
+                navigate("/FindDoctors");
+          }}
           className="max-w-lg w-full mx-auto"
         >
           <div className="mb-12">
