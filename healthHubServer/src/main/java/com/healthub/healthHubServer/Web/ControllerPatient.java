@@ -1,6 +1,5 @@
 package com.healthub.healthHubServer.Web;
 
-import com.healthub.healthHubServer.DOA.Model.Dossier_Medicale;
 import com.healthub.healthHubServer.DOA.Model.Patient;
 import com.healthub.healthHubServer.Service.Manager.ManagerDossier_Medical;
 import com.healthub.healthHubServer.Service.Manager.ManagerPatient;
