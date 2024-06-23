@@ -1,6 +1,7 @@
 import { postPatients } from "@/api/Patient";
-import { Patient } from "@/type";
+import { useNavigate } from "react-router-dom";
 export const Registration = () => {
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     const name = (
       document.querySelector("input[name=name]") as HTMLInputElement
@@ -11,22 +12,21 @@ export const Registration = () => {
     const password = (
       document.querySelector("input[name=password]") as HTMLInputElement
     ).value;
-    await postPatients({
-      
-  userName: "JohnDoe",
-  email: "john.doe@example.com",
-  password: "password123",
-  dossier_medicale: {
-    antecedent: "Some antecedents",
-    allergies: "Some allergies",
-    traitement: "Some treatment"
-  },
-  consultations: [],
-  avis: []
+  await postPatients({
+    userName: name,
+    email: email,
+    password: password,
+    dossier_medicale: {
+      antecedent: "",
+      allergies: "",
+      traitement: ""
+    },
+    consultations: [],
+    avis: [],
+    id: 0,
+  });
 
-
-    });
-  };
+};
   return (
     <div className="font-[sans-serif] bg-white text-black  flex ">
       {/* Image Section */}
@@ -156,6 +156,9 @@ export const Registration = () => {
           </div>
           <div className="mt-12">
             <button
+            onClick={()=>{
+                navigate("/DossierMedicale");
+            }}
               type="submit"
               className="w-max shadow-xl py-2.5 px-8 text-sm font-semibold rounded-md bg-transparent text-healthHub-700 border border-healthHub-700 focus:outline-none"
             >

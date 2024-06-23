@@ -29,13 +29,12 @@ export interface JobDeskItemProps {
 
 export type Patient = {
   id: number;
-  name: string;
   userName: string;
   email: string;
   password: string;
   dossier_medicale: object;
   consultations: Array<any>; // Add consultation type btw <any>
-  avis: L<any>; // Add Avis type btw <any>
+  avis: Array<any>; // Add Avis type btw <any>
 };
 
 export type Doctor = {
