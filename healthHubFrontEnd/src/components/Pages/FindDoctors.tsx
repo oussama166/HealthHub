@@ -1,3 +1,4 @@
+import { getDoctors } from "@/api/Medecin";
 import {
   Select,
   SelectContent,
@@ -6,12 +7,35 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { speciality } from "@/manifest.json";
+import { Doctor } from "@/type";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import doc from "../../../public/Doccardpic.jpeg";
+import { useEffect, useState } from "react";
+
 export const FindDoctors = () => {
+  const [doctors, setDoctors] = useState<Doctor[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const doctorsData = await getDoctors();
+        setDoctors(doctorsData);
+        setLoading(false);
+      } catch (error) {
+        setError('Failed to fetch doctors');
+        setLoading(false);
+      }
+    };
+
+    fetchDoctors();
+  }, []);
+
   return (
     <div className="font-[sans-serif] bg-white text-black p-6">
-      <div className="grid grid-cols-4 gap-4 my-28 mx-28">
+      <div className="grid grid-cols-3 gap-4 my-28 mx-28">
         <Select>
           <SelectTrigger
             className="w-full py-8 px-4 text-xl ring-offset-blue-500 focus-visible:ring-1 focus-visible:ring-blues-500"
@@ -19,24 +43,6 @@ export const FindDoctors = () => {
           >
             <SelectValue
               placeholder="Internal Medicine"
-              defaultValue={"Internal Medicine"}
-            />
-          </SelectTrigger>
-          <SelectContent>
-            {speciality.map((item, index) => (
-              <SelectItem className="text-xl" key={index} value={item}>
-                {item}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectTrigger
-            className="w-full py-8 px-4 text-xl ring-offset-blue-500 focus-visible:ring-1 focus-visible:ring-blues-500"
-            chevronDownIcon={false}
-          >
-            <SelectValue
-              placeholder="Ville"
               defaultValue={"Internal Medicine"}
             />
           </SelectTrigger>
@@ -59,44 +65,19 @@ export const FindDoctors = () => {
       </div>
       <div className="font-[sans-serif] py-4 mx-auto lg:max-w-7xl sm:max-w-full">
         <h2 className="text-4xl font-extrabold text-gray-800 mb-12">Doctors</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <DoctorCard
-            fullName="John Doe"
-            speciality="Internal Medicine"
-            rating={2}
-            price={100}
-          />
-          <DoctorCard
-            fullName="Dr. John Doe"
-            speciality="Internal Medicine"
-            rating={4}
-            price={100}
-          />
-          <DoctorCard
-            fullName="Dr. John Doe"
-            speciality="Internal Medicine"
-            rating={4}
-            price={100}
-          />
-          <DoctorCard
-            fullName="Dr. John Doe"
-            speciality="Internal Medicine"
-            rating={4}
-            price={100}
-          />
-          <DoctorCard
-            fullName="Dr. John Doe"
-            speciality="Internal Medicine"
-            rating={4}
-            price={100}
-          />
-          <DoctorCard
-            fullName="Dr. John Doe"
-            speciality="Internal Medicine"
-            rating={4}
-            price={100}
-          />
-        </div>
+        {
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+           {doctors.map((doctor) => (
+            <DoctorCard
+              key={doctor.id} // Use the unique doctor.id as the key
+              fullName={doctor.name}
+              speciality={doctor.specialty}
+              rating={2} // Assuming rating is hardcoded as 2
+              price={10} // Assuming price is hardcoded as 10
+            />
+          ))}
+          </div>
+        }
       </div>
     </div>
   );
@@ -140,7 +121,7 @@ const DoctorCard = ({
 
         <div className="w-5/6 h-[260px] p-4 overflow-hidden mx-auto aspect-w-16 aspect-h-8">
           <img
-            src="https://readymadeui.com/images/product9.webp"
+            src={doc}
             alt="Product 1"
             className="h-full w-full object-contain"
           />
