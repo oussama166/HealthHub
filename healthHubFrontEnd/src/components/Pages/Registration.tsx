@@ -1,6 +1,8 @@
 import { postPatients } from "@/api/Patient";
 import { Patient } from "@/type";
+import { useNavigate } from "react-router-dom";
 export const Registration = () => {
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     const name = (
       document.querySelector("input[name=name]") as HTMLInputElement
@@ -156,6 +158,9 @@ export const Registration = () => {
           </div>
           <div className="mt-12">
             <button
+            onClick={()=>{
+                navigate("/DossierMedicale");
+            }}
               type="submit"
               className="w-max shadow-xl py-2.5 px-8 text-sm font-semibold rounded-md bg-transparent text-healthHub-700 border border-healthHub-700 focus:outline-none"
             >
