@@ -45,19 +45,22 @@ export type Doctor = {
   password: string;
   mapsUrl: string;
   ville: string;
+  joinDate: string;
   price: number;
   specialty: string;
   consultations?: Array<any>; // Add consultation type btw <any>
   avis?: Array<any>; // Add Avis type btw <any>
 };
+
+
+
+
 interface DossierMedical {
   id?: number;
   antecedent: string;
   allergies: string;
   traitement: string;
 }
-
-
 
 export interface AuthContextType {
   isLogged: boolean;
@@ -66,4 +69,10 @@ export interface AuthContextType {
   setUser: (user: string | null) => void;
   typeUser: "Doctor" | "Patient";
   setTypeUser: (typeUser: "Doctor" | "Patient") => void;
+}
+
+export interface signDoc {
+  email: string;
+  password: string;
+  isDoctor: boolean;
 }

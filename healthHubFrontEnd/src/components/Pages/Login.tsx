@@ -1,23 +1,35 @@
-import { useContext, useEffect, useRef } from "react";
-import { Label } from "../ui/label";
-import { Checkbox } from "../ui/checkbox";
 import { AuthContext } from "@/App";
-import { AuthContextType } from "@/type";
+import { AuthContextType, signDoc } from "@/type";
+import { useContext, useState } from "react";
+import { Checkbox } from "../ui/checkbox";
+import { Label } from "../ui/label";
+import { signAsDoctorOrPatient } from "@/api/Medecin";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const context: AuthContextType = useContext(AuthContext);
-  const emailRef = useRef<HTMLInputElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [isDoc, setIsDoc] = useState<boolean>(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const data: signDoc = {
+      email: email,
+      password: password,
+      isDoctor: isDoc,
+    };
+    context.setIsLogged(await signAsDoctorOrPatient(data));
     if (context.isLogged) {
-      console.log("User is logged in");
+      const userType = context.typeUser;
+      if (userType == "Doctor") {
+        navigate("/Dashboard");
+      } else {
+        navigate("/FindDoctors");
+      }
     }
-    if (context.user != null) {
-      console.warn(JSON.parse(context.user));
-      console.log(context.typeUser);
-    }
-  });
+  };
 
   return (
     <div className="font-[sans-serif] h-screen bg-white text-black  flex">
@@ -56,7 +68,11 @@ export const Login = () => {
                 required
                 className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-healthHub-700 px-2 py-3 outline-none"
                 placeholder="Enter email"
-                ref={emailRef}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onFocus={() => {
+                  setEmail(JSON.parse(context.user).email);
+                }}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -89,12 +105,16 @@ export const Login = () => {
             <label className="text-xs block mb-2">Password</label>
             <div className="relative flex items-center">
               <input
-                ref={passwordRef}
                 name="password"
                 type="password"
                 required
                 className="w-full bg-transparent text-sm border-b border-gray-300 focus:border-healthHub-700 px-2 py-3 outline-none"
                 placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                onFocus={() => {
+                  setPassword(JSON.parse(context.user).password);
+                }}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -111,6 +131,7 @@ export const Login = () => {
             <Checkbox
               id="terms"
               className="border-black/20  data-[state=checked]:bg-blues-500 data-[state=checked]:text-white cursor-pointer"
+              onClick={() => setIsDoc(!isDoc)}
             />
             <Label htmlFor="terms" className="cursor-pointer">
               You want to connect as Doctor?
@@ -120,6 +141,7 @@ export const Login = () => {
             <button
               type="submit"
               className="w-max shadow-xl py-2.5 px-8 text-sm font-semibold rounded-md bg-transparent text-healthHub-700 border border-healthHub-700 focus:outline-none"
+              onClick={onSubmit}
             >
               Login
             </button>

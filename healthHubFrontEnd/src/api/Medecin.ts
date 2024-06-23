@@ -1,4 +1,4 @@
-import { Doctor } from "@/type";
+import { Doctor, signDoc } from "@/type";
 import axios from "axios";
 
 const host = "http://localhost:8083/api/v1/";
@@ -8,11 +8,10 @@ export const createDoctor = async (data: Doctor) => {
       headers: {
         "Content-Type": "application/json",
       },
-      
     })
     .then((res) => {
       localStorage.clear();
-      localStorage.setItem("doctor", JSON.stringify(res.data));
+      localStorage.setItem("Doctor", JSON.stringify(res.data));
       return true;
     })
     .catch((err) => {
@@ -21,9 +20,23 @@ export const createDoctor = async (data: Doctor) => {
     });
 };
 
-// export const signAsDoctor = async (data: Doctor) => {
-
-// }
+export const signAsDoctorOrPatient = async (data: signDoc) => {
+  return await axios
+    .post(`${host}connect`, data, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((res) => {
+      console.log(res);
+      alert("Connected");
+      return true;
+    })
+    .catch((err) => {
+      console.error(err);
+      return false;
+    });
+};
 export const getDoctors = async () => {
   return await axios
     .get(`${host}getDocs`)

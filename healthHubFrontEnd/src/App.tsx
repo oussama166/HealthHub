@@ -32,10 +32,10 @@ function App() {
   useEffect(() => {
     // check if the user is logged in
     // if the user is logged in, redirect to the dashboard
-    if (localStorage.getItem("doctor") || localStorage.getItem("patient")) {
-      setIsLogged(true);
+    if (localStorage.getItem("Doctor") || localStorage.getItem("Patient")) {
+      setIsLogged(isLogged);
       setUser(
-        localStorage.getItem("doctor") || localStorage.getItem("patient")
+        localStorage.getItem("Doctor") || localStorage.getItem("Patient")
       );
       setTypeUser(localStorage.key(1) ? "Doctor" : "Patient");
     }

@@ -9,7 +9,7 @@ export const postPatients = async (data: Patient) => {
       alert("Patient created successfully");
       console.log(res)
       localStorage.clear();
-      localStorage.setItem("patient", JSON.stringify(res));
+      localStorage.setItem("Patient", JSON.stringify(res.data));
     })
     .catch((error) => {
       console.error(error);
