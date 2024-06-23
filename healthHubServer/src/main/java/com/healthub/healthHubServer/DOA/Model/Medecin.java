@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 
-import java.util.Date;
 import java.util.List;
 
 @Builder
@@ -30,20 +29,11 @@ public class Medecin {
     String password;
     String MapsUrl;
     String Ville;
-    @Temporal(TemporalType.TIMESTAMP)
-    Date joinDate;
-    @Min(value = 3, message = "The price should be greater than 3$ !!!")
+    @Min(value = 3,message = "The price should be great than 3$ !!!")
     Double Price;
     MedicalSpecialty specialty;
     @OneToMany(mappedBy = "medecin")
     private List<Consultation> consultations;
     @OneToMany(mappedBy = "medecin")
     private List<Avis> avis;
-
-    @PrePersist
-    protected void onCreate() {
-        if (this.joinDate == null) {
-            this.joinDate = new Date();
-        }
-    }
 }

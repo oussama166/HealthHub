@@ -1,9 +1,6 @@
-import { AuthContext } from "@/App";
 import { columns } from "@/components/ui/columns";
 import { DataTable } from "@/components/ui/datatable";
 import { cn } from "@/lib/utils";
-import { Doctor } from "@/type";
-import { useContext, useEffect, useState } from "react";
 import { TbArrowBarToLeft, TbArrowBarToRight } from "react-icons/tb";
 
 export const staticStyle = {
@@ -942,14 +939,6 @@ const schedules = [
   },
 ];
 function DashboardItem() {
-  const { user } = useContext(AuthContext);
-  const [doc, setDoc] = useState<Doctor | null>(null);
-
-  useEffect(() => {
-    if (user != null) {
-      setDoc(JSON.parse(user));
-    }
-  }, [user]);
   return (
     <section
       className={`w-full h-screen p-5 flex flex-col gap-5 overflow-y-auto`}
@@ -972,7 +961,7 @@ function DashboardItem() {
             <h1 className="font-semibold text-xl">
               Good to see you again,{" "}
               <span className="underline decoration-dotted underline-offset-4">
-                {doc?.name}
+                John Doe
               </span>
               <span className="text-2xl">👋</span>
             </h1>

@@ -1,36 +1,24 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
+import { staticStyle } from "./DashboardItem";
+import { PiWalletBold } from "react-icons/pi";
+import { IoCameraOutline, IoInformation } from "react-icons/io5";
+import { HiOutlineOfficeBuilding } from "react-icons/hi";
+import { BiCalendarCheck } from "react-icons/bi";
+import { format } from "date-fns";
+import { MdOutlineMailOutline, MdOutlinePhone } from "react-icons/md";
+import { DataTable } from "@/components/ui/datatable";
 import {
   columnsConsultation,
   scheduleConsultation,
 } from "@/components/ui/columns";
-import { DataTable } from "@/components/ui/datatable";
-import { cn } from "@/lib/utils";
-import { format } from "date-fns";
-import { BiCalendarCheck } from "react-icons/bi";
-import { HiOutlineOfficeBuilding } from "react-icons/hi";
-import { IoCameraOutline, IoInformation } from "react-icons/io5";
-import { MdOutlineMailOutline, MdOutlinePhone } from "react-icons/md";
-import { PiWalletBold } from "react-icons/pi";
-import { staticStyle } from "./DashboardItem";
 
 // Getting the data from the manifest
 
-import { AuthContext } from "@/App";
 import { dataJobDesk } from "@/manifest.json";
-import { Doctor, JobDeskItemProps } from "@/type";
-import { useContext, useEffect, useState } from "react";
+import { JobDeskItemProps } from "@/type";
 
 function Jobdesk() {
-  const { user } = useContext(AuthContext);
-  const [doc, setDoc] = useState<Doctor | null>(null);
-
-  useEffect(() => {
-    if (user != null) {
-      setDoc(JSON.parse(user));
-      // console.log(JSON.parse(user));
-    }
-  }, [user]); // Incluez 'user' dans le tableau des dépendances
-
   return (
     <>
       <section
@@ -57,9 +45,9 @@ function Jobdesk() {
                 <AvatarFallback>DO</AvatarFallback>
               </Avatar>
               <div>
-                <h1 className="text-xl font-semibold">{doc?.name}</h1>
-                <p className="text-xl font-normal text-neteurals-300 lowercase">
-                  {doc?.specialty}
+                <h1 className="text-xl font-semibold">Oussama Ouardi</h1>
+                <p className="text-xl font-normal text-neteurals-300 ">
+                  Allergy
                 </p>
               </div>
             </section>
@@ -74,13 +62,13 @@ function Jobdesk() {
                 <JobDeskItemComp
                   fill
                   title="Speciality"
-                  info={doc?.specialty || "No Specialty"}
+                  info="Allergy"
                   icon={<IoInformation className="text-3xl text-black" />}
                 />
                 <JobDeskItemComp
                   fill
                   title="Sallary"
-                  info={`$${doc?.price}`}
+                  info="$5000"
                   infoClassName="text-xl font-semibold text-green-600"
                   icon={<PiWalletBold className="text-3xl text-black" />}
                 />
@@ -96,17 +84,14 @@ function Jobdesk() {
                 <JobDeskItemComp
                   fill
                   title="Camera Assistance"
-                  info="Off"
+                  info="On"
                   infoClassName="text-xl font-semibold text-green-600"
                   icon={<IoCameraOutline className="text-3xl text-black" />}
                 />
                 <JobDeskItemComp
                   fill
                   title="joining Date"
-                  info={format(
-                    new Date(doc?.joinDate || "10/10/2002"),
-                    "MMMM dd, yyyy"
-                  )}
+                  info={format(new Date("7/5/2057"), "MMMM dd, yyyy")}
                   icon={<BiCalendarCheck className="text-3xl text-black" />}
                 />
               </section>
@@ -122,7 +107,7 @@ function Jobdesk() {
                 <JobDeskItemComp
                   fill={false}
                   info="Email"
-                  title={doc?.email || "No Email"}
+                  title="ubo@rune.gq"
                   icon={
                     <MdOutlineMailOutline className="text-3xl text-black" />
                   }
@@ -130,7 +115,7 @@ function Jobdesk() {
                 <JobDeskItemComp
                   fill={false}
                   info="Phone"
-                  title={"No Phone"}
+                  title="+212 6 99 99 99 99"
                   icon={<MdOutlinePhone className="text-3xl text-black" />}
                 />
               </section>

@@ -100,7 +100,7 @@ const DoctorCard = ({
   const ratingOff = ratingMax - ratingOn;
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
-    currency: "MAD",
+    currency: "USD",
   });
   return (
     <Link to={`/doctor/${fullName.toLowerCase().replace(" ", "-")}`}>
