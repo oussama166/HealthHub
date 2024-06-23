@@ -55,7 +55,10 @@ export const Registration = () => {
       <div className="w-full flex items-center md:p-8 p-6  h-full lg:w-11/12 lg:ml-auto">
         <form
           className="max-w-lg w-full mx-auto"
-          onSubmit={() => handleSubmit()}
+          onSubmit={() => {
+            handleSubmit();
+            navigate("/DossierMedicale");
+          }}
         >
           <div className="mb-12">
             <h3 className="text-3xl font-bold text-healthHub-300">
@@ -158,9 +161,6 @@ export const Registration = () => {
           </div>
           <div className="mt-12">
             <button
-            onClick={()=>{
-                navigate("/DossierMedicale");
-            }}
               type="submit"
               className="w-max shadow-xl py-2.5 px-8 text-sm font-semibold rounded-md bg-transparent text-healthHub-700 border border-healthHub-700 focus:outline-none"
             >

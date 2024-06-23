@@ -48,28 +48,13 @@ public class ServicePatient implements ManagerPatient {
 
             System.out.println(patient.getUserName());
             // Save the patient
-<<<<<<< HEAD
+
             patientRepository.save(patient);
             existingPatient = patientRepository.findByAll(patient.getEmail());
 
-=======
-            Patient savedPatient = patientRepository.save(patient);
->>>>>>> ebab52b9e33d153e75d05160bbc9430b69a6ac37
-            // Creating a new Dossier_Medicale for the patient
-//            Dossier_Medicale dossierMedicale = new Dossier_Medicale();
-//            dossierMedicale.setTraitement("test");
-//            dossierMedicale.setAntecedent("test");
-//            dossierMedicale.setAllergies(patient.getDossier_medicale().getAllergies());
-//            dossierMedicale.setPatientDossier(savedPatient);
-<<<<<<< HEAD
-//
-//            // Saving the dossierMedicale
-//            dossier_MedicaleRepository.save(dossierMedicale);
 
-=======
-            // Saving the dossierMedicale
-//            dossier_MedicaleRepository.save(dossierMedicale);
->>>>>>> ebab52b9e33d153e75d05160bbc9430b69a6ac37
+            Patient savedPatient = patientRepository.save(patient);
+
             // Log and return the saved patient
             logger.info("Patient created successfully with email: " + existingPatient.get().getEmail());
             return Optional.of(existingPatient.get());

@@ -1,31 +1,30 @@
-import { putPatients } from "@/api/Patient";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 export const DossierMedicale = () => {
-  const navigate = useNavigate();
-  const handleSubmit = async () => {
-    const Antecedent = (
-      document.querySelector("input[name=Antecedent]") as HTMLInputElement
-    ).value;
-    const Allergies = (
-      document.querySelector("input[name=Allergies]") as HTMLInputElement
-    ).value;
-    const Traitement = (
-      document.querySelector("input[name=Traitement]") as HTMLInputElement
-    ).value;
-    await putPatients({
-      userName: "",
-      email: "",
-      password: "",
-      dossier_medicale: {
-        antecedent: Antecedent,
-        allergies: Allergies,
-        traitement: Traitement,
-      },
-      consultations: [],
-      avis: [],
-      id: 0,
-    });
-  };
+  // const navigate = useNavigate();
+  // const handleSubmit = async () => {
+  //   const Antecedent = (
+  //     document.querySelector("input[name=Antecedent]") as HTMLInputElement
+  //   ).value;
+  //   const Allergies = (
+  //     document.querySelector("input[name=Allergies]") as HTMLInputElement
+  //   ).value;
+  //   const Traitement = (
+  //     document.querySelector("input[name=Traitement]") as HTMLInputElement
+  //   ).value;
+  //   await putPatients({
+  //     userName: "",
+  //     email: "",
+  //     password: "",
+  //     dossier_medicale: {
+  //       antecedent: Antecedent,
+  //       allergies: Allergies,
+  //       traitement: Traitement,
+  //     },
+  //     consultations: [],
+  //     avis: [],
+  //     id: 0,
+  //   });
+  // };
   return (
     <div className="font-[sans-serif] h-screen bg-white text-black  flex">
       {/* Image Section */}
