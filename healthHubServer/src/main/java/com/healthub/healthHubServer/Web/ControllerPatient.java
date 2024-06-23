@@ -39,16 +39,15 @@ public class ControllerPatient {
     // ========== CREATE ========= //
     @PostMapping(
             path = "/createPatient",
-            consumes = { MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE },
+            consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.ALL_VALUE},
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<?> createPatient(@RequestBody Patient patient) {
         try {
             Optional<Patient> patientInfo = managerPatient.createPatient(patient);
-
             if (patientInfo.isPresent()) {
                 logger.info("Patient created successfully with email: " + patientInfo.get());
-                return ResponseEntity.status(HttpStatus.OK).body(patientInfo.get());
+                return ResponseEntity.status(HttpStatus.OK).body(patientInfo);
             } else {
                 throw new Exception("Patient creation failed or returned null.");
             }
@@ -57,7 +56,6 @@ public class ControllerPatient {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
-
 
 
     // ========== SELECT ========= //

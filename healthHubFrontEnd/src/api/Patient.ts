@@ -6,11 +6,10 @@ export const postPatients = async (data: Patient) => {
   return await axios
     .post(`${host}createPatient`, data)
     .then((res) => {
-      console.log(res);
       alert("Patient created successfully");
+      console.log(res)
       localStorage.clear();
-      localStorage.setItem("patients", JSON.stringify(data));
-      console.log(res);
+      localStorage.setItem("patient", JSON.stringify(res));
     })
     .catch((error) => {
       console.error(error);
